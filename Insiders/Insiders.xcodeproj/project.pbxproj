@@ -56,7 +56,6 @@
 				3B2E03AA32E43C587A2FAF0F /* Pods-Insiders.debug.xcconfig */,
 				3D312CA4DF6C21B3D930FE95 /* Pods-Insiders.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
