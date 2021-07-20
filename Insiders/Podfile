@@ -6,5 +6,11 @@ target 'Insiders' do
   use_frameworks!
 
   # Pods for Insiders
+  
+  pod 'Firebase/Analytics'
+  
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 end
