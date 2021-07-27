@@ -1,29 +1,29 @@
-//
-//  StartViewController.swift
-//  Insiders
-//
-//  Created by Guilherme de Sousa Peixoto on 26/07/21.
-//
-
 import UIKit
 
-class StartViewController: UIViewController {
+final class StartViewController: UIViewController {
 
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButtons()
+        setupNavigationController()
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+extension StartViewController {
+    
+    private func setupButtons(){
+        signUpButton.layer.cornerRadius = 15
+        
+        loginButton.layer.borderWidth = 1
+        loginButton.layer.borderColor = UIColor(red: 62.0/255, green: 213.0/255, blue: 151.0/255, alpha: 1.0).cgColor
+        loginButton.layer.cornerRadius = 15
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupNavigationController(){
+        navigationController?.navigationBar.isHidden = true
     }
-    */
-
 }

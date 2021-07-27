@@ -15,12 +15,22 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        emailField.layer.cornerRadius = 10
-        passwordField.layer.cornerRadius = 10
-        loginButton.layer.cornerRadius = 10
+        setupNavigationController()
+        setupLoginButton()
     }
-
-
+    
+    
 }
+
+extension LoginViewController {
+    
+    private func setupNavigationController() {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    private func setupLoginButton() {
+        loginButton.layer.cornerRadius = 15
+    }
+}
+
 
