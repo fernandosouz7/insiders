@@ -2,17 +2,30 @@ import UIKit
 
 final class StartViewController: UIViewController {
 
-    @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+    //MARK: - IBOutlets
+    @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
     
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
         setupNavigationController()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigationController()
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let loginVC = segue.destination as? LoginViewController {
+            loginVC.create(with: LoginViewModel())
+        }
+    }
 }
 
+// MARK: - Private func
 extension StartViewController {
     
     private func setupButtons(){

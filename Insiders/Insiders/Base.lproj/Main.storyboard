@@ -55,7 +55,7 @@
                                     <color key="titleColor" red="0.09336254746" green="0.83745235200000001" blue="0.60255318879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="fsK-qh-Keq"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="ZNm-IR-IHS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is it your first time?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VT-bu-Adg">
@@ -106,6 +106,7 @@
                     <connections>
                         <outlet property="loginButton" destination="kga-oB-VAk" id="Ofi-sl-8mb"/>
                         <outlet property="signUpButton" destination="cJp-Z0-O6g" id="PIk-Wo-W33"/>
+                        <segue destination="GMw-xc-SFT" kind="show" identifier="startToHome" id="CYW-ox-dbf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pnu-YI-EiP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -126,7 +127,7 @@
                                     <constraint firstAttribute="height" constant="45" id="9W5-7B-csT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Vl-oDA">
                                 <rect key="frame" x="32" y="226" width="311" height="45"/>
@@ -155,6 +156,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qkg-h9-MuN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have a account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rff-6F-pN0">
                                 <rect key="frame" x="124.5" y="624" width="126" height="27"/>
@@ -207,11 +211,12 @@
                         <outlet property="emailField" destination="0Tm-By-1mf" id="TuH-aK-Rcv"/>
                         <outlet property="loginButton" destination="Frg-aA-gYO" id="Mzs-vv-vWm"/>
                         <outlet property="passwordField" destination="LZt-Vl-oDA" id="dAu-TT-2uD"/>
+                        <segue destination="GMw-xc-SFT" kind="show" identifier="loginToHome" id="k4I-cv-LlQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.40000000000001" y="113.79310344827587"/>
+            <point key="canvasLocation" x="129" y="468"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="xif-OQ-WIj">
@@ -316,11 +321,22 @@
                     <navigationItem key="navigationItem" title="Create Account" id="eh8-3H-XEp"/>
                     <connections>
                         <outlet property="signUpButton" destination="OfR-Kk-hUE" id="c5b-Eg-6YK"/>
+                        <segue destination="GMw-xc-SFT" kind="show" identifier="signUpToHome" id="IEV-28-WHh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19r-nx-ZQA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="847.69230769230762" y="113.74407582938387"/>
+            <point key="canvasLocation" x="129" y="-260"/>
+        </scene>
+        <!--homeStoryboard-->
+        <scene sceneID="HYa-No-STT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="homeStoryboard" id="GMw-xc-SFT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="64m-on-lKe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWE-a9-Hix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="-237"/>
         </scene>
         <!--Recover Password-->
         <scene sceneID="NLB-br-eJj">
@@ -380,9 +396,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAg-Qw-fdx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="112.89355322338831"/>
+            <point key="canvasLocation" x="882" y="469"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="k4I-cv-LlQ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="LogoInsider" width="370.5" height="500"/>
         <image name="thumbnail_insiders" width="709" height="155"/>

@@ -1,10 +1,3 @@
-//
-//  SignUpViewController.swift
-//  Insiders
-//
-//  Created by Guilherme de Sousa Peixoto on 26/07/21.
-//
-
 import UIKit
 
 class SignUpViewController: UIViewController {
