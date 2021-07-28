@@ -179,6 +179,9 @@
                                     <constraint firstAttribute="height" constant="75" id="vJh-4C-HUt"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lHJ-0Y-GoW">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -195,9 +198,11 @@
                             <constraint firstItem="0Tm-By-1mf" firstAttribute="top" secondItem="b5Q-DK-xmg" secondAttribute="bottom" constant="16" id="a9y-E3-8Kv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rff-6F-pN0" secondAttribute="bottom" constant="16" id="aEa-Rg-sBg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Frg-aA-gYO" secondAttribute="trailing" constant="32" id="aHN-iq-7yr"/>
+                            <constraint firstItem="lHJ-0Y-GoW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aOE-rP-THu"/>
                             <constraint firstItem="LZt-Vl-oDA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="c4o-Bv-WJZ"/>
                             <constraint firstItem="BRB-9C-jlF" firstAttribute="leading" secondItem="rff-6F-pN0" secondAttribute="trailing" constant="6" id="cAu-tg-1gx"/>
                             <constraint firstItem="rff-6F-pN0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nLp-H7-kAv"/>
+                            <constraint firstItem="lHJ-0Y-GoW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pj1-xP-JjG"/>
                             <constraint firstItem="BRB-9C-jlF" firstAttribute="bottom" secondItem="rff-6F-pN0" secondAttribute="bottom" id="x3W-it-2y5"/>
                             <constraint firstItem="0Tm-By-1mf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="x8W-qu-qZK"/>
                             <constraint firstItem="Frg-aA-gYO" firstAttribute="top" secondItem="KtQ-Y2-gIs" secondAttribute="bottom" constant="30" id="yMe-1c-D33"/>
@@ -208,6 +213,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="BwN-Zl-098"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="lHJ-0Y-GoW" id="zpG-Ea-SlT"/>
                         <outlet property="emailField" destination="0Tm-By-1mf" id="TuH-aK-Rcv"/>
                         <outlet property="loginButton" destination="Frg-aA-gYO" id="Mzs-vv-vWm"/>
                         <outlet property="passwordField" destination="LZt-Vl-oDA" id="dAu-TT-2uD"/>
@@ -216,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="468"/>
+            <point key="canvasLocation" x="128.80000000000001" y="467.3163418290855"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="xif-OQ-WIj">
