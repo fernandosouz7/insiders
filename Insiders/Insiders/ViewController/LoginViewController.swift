@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     // MARK: - Stored Properties
     private var loginViewModel: LoginViewModel!
     
