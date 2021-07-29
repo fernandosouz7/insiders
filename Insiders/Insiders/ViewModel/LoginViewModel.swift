@@ -53,7 +53,7 @@ final class LoginViewModel {
 
 extension LoginViewModel {
     enum CredentialsInputStatus {
-        case Correct
-        case Incorrect
+        case correct
+        case incorrect
     }
 }
