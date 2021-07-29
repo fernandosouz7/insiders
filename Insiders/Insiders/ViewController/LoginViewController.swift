@@ -20,7 +20,7 @@ final class LoginViewController: UIViewController {
     }
     
     //MARK: - IBActions
-    @IBAction func didTapLoginButton(_ sender: Any) {
+    @IBAction private func didTapLoginButton(_ sender: Any) {
         activityIndicator.startAnimating()
         guard let email = emailField.text, let password = passwordField.text else { return }
         loginViewModel.updateCredentials(with: email, and: password)
@@ -73,5 +73,4 @@ extension LoginViewController {
         loginViewModel = viewModel
     }
 }
-
 
