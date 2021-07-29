@@ -1,6 +1,6 @@
 import UIKit
 
-class SignUpViewController: UIViewController {
+final class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signUpButton: UIButton!
     
