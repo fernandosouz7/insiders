@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
