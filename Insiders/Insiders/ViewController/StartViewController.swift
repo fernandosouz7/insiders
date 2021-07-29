@@ -19,7 +19,7 @@ final class StartViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let loginVC = segue.destination as? LoginViewController {
+        if let loginViewController = segue.destination as? LoginViewController {
             loginVC.create(with: LoginViewModel())
         }
     }
