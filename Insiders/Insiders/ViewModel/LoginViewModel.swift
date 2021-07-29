@@ -22,7 +22,7 @@ final class LoginViewModel {
         credentials.password = password
     }
     
-    func login() {
+    func makeLogin() {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if error == nil {
                 self?.loginResult.value = true
