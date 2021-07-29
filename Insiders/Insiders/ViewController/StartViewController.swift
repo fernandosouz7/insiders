@@ -28,7 +28,7 @@ final class StartViewController: UIViewController {
 // MARK: - Private func
 extension StartViewController {
     
-    private func setupButtons(){
+    private func setupButtons() {
         signUpButton.layer.cornerRadius = 15
         
         loginButton.layer.borderWidth = 1
