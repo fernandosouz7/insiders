@@ -2,7 +2,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     // MARK: - Stored Properties
-    private var loginViewModel: LoginViewModel!
+    private var loginViewModel: LoginViewModel?
     
     //MARK: - IBOutlets
     @IBOutlet private weak var emailField: UITextField!
@@ -73,4 +73,3 @@ extension LoginViewController {
         loginViewModel = viewModel
     }
 }
-
