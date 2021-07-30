@@ -37,17 +37,17 @@ final class LoginViewModel {
     func credentialsInput() -> CredentialsInputStatus {
         if email.isEmpty && password.isEmpty {
             errorMessage.value = "Please provide email and password."
-            return .Incorrect
+            return .incorrect
         }
         if email.isEmpty {
             errorMessage.value = "Email field is empty."
-            return .Incorrect
+            return .incorrect
         }
         if password.isEmpty {
             errorMessage.value = "Password field is empty."
-            return .Incorrect
+            return .incorrect
         }
-        return .Correct
+        return .correct
     }
 }
 
