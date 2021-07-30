@@ -23,12 +23,12 @@ final class LoginViewController: UIViewController {
     @IBAction private func didTapLoginButton(_ sender: Any) {
         activityIndicator.startAnimating()
         guard let email = emailField.text, let password = passwordField.text else { return }
-        loginViewModel.updateCredentials(with: email, and: password)
+        loginViewModel?.updateCredentials(with: email, and: password)
         
-        switch loginViewModel.credentialsInput() {
-        case .Correct:
+        switch loginViewModel!.credentialsInput() {
+        case .correct:
             login()
-        case .Incorrect:
+        case .incorrect:
             return
         }
     }
@@ -47,11 +47,11 @@ extension LoginViewController {
     }
     
     private func login() {
-        loginViewModel.login()
+        loginViewModel?.makeLogin()
     }
     
     private func bindData() {
-        loginViewModel.errorMessage.bind {
+        loginViewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
             let alert = UIAlertController(title: errorMessage, message: nil , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -59,7 +59,7 @@ extension LoginViewController {
             self.present(alert, animated: true, completion: nil)
         }
         
-        loginViewModel.loginResult.bind { [weak self] in
+        loginViewModel?.loginResult.bind { [weak self] in
             if $0 {
                 self?.activityIndicator.stopAnimating()
                 self?.performSegue(withIdentifier: "loginToHome", sender: self)}
