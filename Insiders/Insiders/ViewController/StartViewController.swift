@@ -1,23 +1,19 @@
 import UIKit
 
-final class StartViewController: UIViewController{
-
-    //MARK: - IBOutlets
+final class StartViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
-    
-    //MARK: - ViewController lifecycle
+    // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
         setupNavigationBarIsHiddenTrue()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBarIsHiddenTrue()
     }
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let loginViewController = segue.destination as? LoginViewController {

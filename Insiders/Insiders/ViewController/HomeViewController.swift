@@ -7,8 +7,6 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBarIsHiddenTrue()
     }
-   
     @IBAction private func didTapLogoutButton(_ sender: Any) {
-        
     }
 }

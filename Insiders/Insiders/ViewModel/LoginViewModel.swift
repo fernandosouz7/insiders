@@ -7,17 +7,14 @@ protocol ViewModelDelegate: AnyObject {
 }
 
 final class LoginViewModel {
-    
     private weak var delegate: ViewModelDelegate?
-    
     init(delegate: ViewModelDelegate) {
         self.delegate = delegate
     }
-    
     func makeLogin(with email: String, and password: String) {
         switch validateLoginCredentials(with: email, and: password) {
         case .correct:
-            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {
                     self?.delegate?.loginResult()
                     return
@@ -28,7 +25,7 @@ final class LoginViewModel {
             setupErrorMessage(with: message)
         }
     }
-    
+
     private func validateLoginCredentials(with email: String, and password: String) -> LoginCredentialsStatus {
         if email.isEmpty && password.isEmpty {
             return .incorrect("Please provide email and password.")
@@ -41,7 +38,6 @@ final class LoginViewModel {
         }
         return .correct
     }
-    
     private func setupErrorMessage(with message: String) {
         delegate?.showErrorMessage(with: message)
     }
