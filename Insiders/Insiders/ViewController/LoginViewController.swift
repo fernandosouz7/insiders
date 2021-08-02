@@ -1,7 +1,7 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    // MARK: - Stored Properties
+    // MARK: - Private Properties
     private var loginViewModel: LoginViewModel?
     
     //MARK: - IBOutlets
@@ -10,66 +10,40 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationController()
+        setupNavigationBarIsHiddenFalse()
         setupLoginButton()
-        bindData()
     }
     
     //MARK: - IBActions
     @IBAction private func didTapLoginButton(_ sender: Any) {
+        guard let email = emailField.text, let password = passwordField.text, let loginViewModel = loginViewModel else { return }
         activityIndicator.startAnimating()
-        guard let email = emailField.text, let password = passwordField.text else { return }
-        loginViewModel?.updateCredentials(with: email, and: password)
-        
-        switch loginViewModel!.credentialsInput() {
-        case .correct:
-            login()
-        case .incorrect:
-            return
-        }
+        loginViewModel.makeLogin(with: email, and: password)
     }
     
-}
-
-//MARK: - Private func
-extension LoginViewController {
-    
-    private func setupNavigationController() {
-        navigationController?.navigationBar.isHidden = false
+    //MARK: - Public functions
+    func create(with viewModel: LoginViewModel) {
+        loginViewModel = viewModel
     }
     
+    //MARK: - Private func
     private func setupLoginButton() {
         loginButton.layer.cornerRadius = 15
     }
-    
-    private func login() {
-        loginViewModel?.makeLogin()
-    }
-    
-    private func bindData() {
-        loginViewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            let alert = UIAlertController(title: errorMessage, message: nil , preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.activityIndicator.stopAnimating()
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        loginViewModel?.loginResult.bind { [weak self] in
-            if $0 {
-                self?.activityIndicator.stopAnimating()
-                self?.performSegue(withIdentifier: "loginToHome", sender: self)}
-        }
-    }
 }
 
-extension LoginViewController {
+extension LoginViewController: ViewModelDelegate {
     
-    func create(with viewModel: LoginViewModel) {
-        loginViewModel = viewModel
+    func showErrorMessage(with message: String) {
+        activityIndicator.stopAnimating()
+        presentAlert(with: message)
+    }
+    
+    func loginResult() {
+        activityIndicator.stopAnimating()
+        performSegue(withIdentifier: "loginToHome", sender: self)
     }
 }

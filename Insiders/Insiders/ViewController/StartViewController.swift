@@ -1,6 +1,6 @@
 import UIKit
 
-final class StartViewController: UIViewController {
+final class StartViewController: UIViewController{
 
     //MARK: - IBOutlets
     @IBOutlet private weak var signUpButton: UIButton!
@@ -10,33 +10,25 @@ final class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
-        setupNavigationController()
+        setupNavigationBarIsHiddenTrue()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigationController()
+        super.viewWillAppear(animated)
+        setupNavigationBarIsHiddenTrue()
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let loginViewController = segue.destination as? LoginViewController {
-            loginViewController.create(with: LoginViewModel())
+            loginViewController.create(with: LoginViewModel(delegate: loginViewController as ViewModelDelegate))
         }
     }
-}
-
-// MARK: - Private func
-extension StartViewController {
-    
+    // MARK: - Private func
     private func setupButtons() {
         signUpButton.layer.cornerRadius = 15
-        
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(red: 62.0/255, green: 213.0/255, blue: 151.0/255, alpha: 1.0).cgColor
         loginButton.layer.cornerRadius = 15
-    }
-    
-    private func setupNavigationController(){
-        navigationController?.navigationBar.isHidden = true
     }
 }
