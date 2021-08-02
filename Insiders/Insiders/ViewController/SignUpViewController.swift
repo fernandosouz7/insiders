@@ -2,20 +2,12 @@ import UIKit
 
 final class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet private weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationController()
+        setupNavigationBarIsHiddenFalse()
         setupSignUpButton()
-    }
-    
-}
-
-extension SignUpViewController {
-    
-    private func setupNavigationController() {
-        navigationController?.navigationBar.isHidden = false
     }
     
     private func setupSignUpButton() {
