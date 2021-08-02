@@ -1,59 +1,55 @@
-import Foundation
 import UIKit
 import Firebase
 
-final class LoginViewModel {
-        
-    private var credentials = Credentials() {
-        didSet {
-            email = credentials.email
-            password = credentials.password
-        }
-    }
-    
-    private var email = ""
-    private var password = ""
-    
-    var errorMessage: Observable<String?> = Observable(nil)
-    var loginResult: Observable<Bool> = Observable(false)
+protocol ViewModelDelegate: AnyObject {
+    func showErrorMessage(with message: String)
+    func loginResult()
+}
 
-    func updateCredentials(with email: String, and password: String, otp: String? = nil) {
-        credentials.email = email
-        credentials.password = password
+final class LoginViewModel {
+    
+    private weak var delegate: ViewModelDelegate?
+    
+    init(delegate: ViewModelDelegate) {
+        self.delegate = delegate
     }
     
-    func makeLogin() {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            if error == nil {
-                self?.loginResult.value = true
-            } else {
-                guard let error = error else { return }
-                self?.errorMessage.value = error.localizedDescription
+    func makeLogin(with email: String, and password: String) {
+        switch validateLoginCredentials(with: email, and: password) {
+        case .correct:
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                guard let error = error else {
+                    self?.delegate?.loginResult()
+                    return
+                }
+                self?.setupErrorMessage(with: error.localizedDescription)
             }
+        case .incorrect(let message):
+            setupErrorMessage(with: message)
         }
-        
     }
     
-    func credentialsInput() -> CredentialsInputStatus {
+    private func validateLoginCredentials(with email: String, and password: String) -> LoginCredentialsStatus {
         if email.isEmpty && password.isEmpty {
-            errorMessage.value = "Please provide email and password."
-            return .incorrect
+            return .incorrect("Please provide email and password.")
         }
         if email.isEmpty {
-            errorMessage.value = "Email field is empty."
-            return .incorrect
+            return .incorrect("Email field is empty.")
         }
         if password.isEmpty {
-            errorMessage.value = "Password field is empty."
-            return .incorrect
+            return .incorrect("Password field is empty.")
         }
         return .correct
+    }
+    
+    private func setupErrorMessage(with message: String) {
+        delegate?.showErrorMessage(with: message)
     }
 }
 
 extension LoginViewModel {
-    enum CredentialsInputStatus {
+    enum LoginCredentialsStatus {
         case correct
-        case incorrect
+        case incorrect(String)
     }
 }
