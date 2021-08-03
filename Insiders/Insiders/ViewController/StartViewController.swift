@@ -19,6 +19,11 @@ final class StartViewController: UIViewController {
         if let loginViewController = segue.destination as? LoginViewController {
             loginViewController.create(with: LoginViewModel(delegate: loginViewController as ViewModelDelegate))
         }
+        if let signUpViewController = segue.destination as? SignUpViewController {
+            signUpViewController.create(
+                with: SignUpViewModel(
+                    delegate: signUpViewController as SignUpViewModelDelegate))
+        }
     }
     // MARK: - Private func
     private func setupButtons() {
