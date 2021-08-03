@@ -1,22 +1,26 @@
 import UIKit
 import Firebase
 
-protocol ViewModelDelegate: AnyObject {
+protocol LoginViewModelDelegate: AnyObject {
+
     func showErrorMessage(with message: String)
-    func loginResult()
+    func didFinishLoginWithSuccess()
 }
 
 final class LoginViewModel {
-    private weak var delegate: ViewModelDelegate?
-    init(delegate: ViewModelDelegate) {
+
+    private weak var delegate: LoginViewModelDelegate?
+
+    init(delegate: LoginViewModelDelegate) {
         self.delegate = delegate
     }
+
     func makeLogin(with email: String, and password: String) {
         switch validateLoginCredentials(with: email, and: password) {
         case .correct:
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {
-                    self?.delegate?.loginResult()
+                    self?.delegate?.didFinishLoginWithSuccess()
                     return
                 }
                 self?.setupErrorMessage(with: error.localizedDescription)
@@ -38,12 +42,14 @@ final class LoginViewModel {
         }
         return .correct
     }
+
     private func setupErrorMessage(with message: String) {
         delegate?.showErrorMessage(with: message)
     }
 }
 
 extension LoginViewModel {
+
     enum LoginCredentialsStatus {
         case correct
         case incorrect(String)

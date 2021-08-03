@@ -1,25 +1,30 @@
 import UIKit
 
 final class StartViewController: UIViewController {
+
     // MARK: - IBOutlets
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
+
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
-        setupNavigationBarIsHiddenTrue()
+        setupNavigationBarIsHidden(value: true)
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarIsHiddenTrue()
+        setupNavigationBarIsHidden(value: true)
     }
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let loginViewController = segue.destination as? LoginViewController {
-            loginViewController.create(with: LoginViewModel(delegate: loginViewController as ViewModelDelegate))
+            loginViewController.create(with: LoginViewModel(delegate: loginViewController as LoginViewModelDelegate))
         }
     }
+
     // MARK: - Private func
     private func setupButtons() {
         signUpButton.layer.cornerRadius = 15
