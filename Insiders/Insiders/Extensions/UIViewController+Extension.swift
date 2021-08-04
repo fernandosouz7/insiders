@@ -8,7 +8,7 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    func setupNavigationBarIsHidden(value: Bool) {
+    func setupNavigation(isHidden: Bool) {
         navigationController?.navigationBar.isHidden = value
     }
 }
