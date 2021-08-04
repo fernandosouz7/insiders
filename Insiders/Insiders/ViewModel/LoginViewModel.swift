@@ -30,7 +30,7 @@ final class LoginViewModel {
         }
     }
 
-    private func validateLoginCredentials(with email: String, and password: String) -> LoginCredentialsStatus {
+    private func getLoginCredentials(with email: String, and password: String) -> LoginCredentialsStatus {
         if email.isEmpty && password.isEmpty {
             return .incorrect("Please provide email and password.")
         }
