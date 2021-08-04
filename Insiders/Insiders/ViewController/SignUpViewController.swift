@@ -6,7 +6,7 @@ final class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarIsHidden(value: false)
+        setupNavigation(isHidden: false)
         setupSignUpButton()
     }
 

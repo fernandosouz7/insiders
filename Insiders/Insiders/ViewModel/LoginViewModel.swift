@@ -16,7 +16,7 @@ final class LoginViewModel {
     }
 
     func makeLogin(with email: String, and password: String) {
-        switch validateLoginCredentials(with: email, and: password) {
+        switch getLoginCredentials(with: email, and: password) {
         case .correct:
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {

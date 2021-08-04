@@ -9,6 +9,6 @@ extension UIViewController {
     }
 
     func setupNavigation(isHidden: Bool) {
-        navigationController?.navigationBar.isHidden = value
+        navigationController?.navigationBar.isHidden = isHidden
     }
 }

@@ -14,7 +14,7 @@ final class LoginViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarIsHidden(value: false)
+        setupNavigation(isHidden: false)
         setupLoginButton()
     }
 

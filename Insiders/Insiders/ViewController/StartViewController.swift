@@ -10,12 +10,12 @@ final class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
-        setupNavigationBarIsHidden(value: true)
+        setupNavigation(isHidden: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarIsHidden(value: true)
+        setupNavigation(isHidden: true)
     }
 
     // MARK: - Navigation
