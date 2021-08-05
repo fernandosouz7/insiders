@@ -6,7 +6,7 @@ target 'Insiders' do
   use_frameworks!
 
   # Pods for Insiders
-  
+  pod 'SwiftLint'
   pod 'Firebase/Analytics'
   
   pod 'Firebase/Auth'
