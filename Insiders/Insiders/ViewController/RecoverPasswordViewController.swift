@@ -37,9 +37,9 @@ final class RecoverPasswordViewController: UIViewController {
 extension RecoverPasswordViewController: RecoverPasswordViewModelDelegate {
 
     func showSuccessMessage(with message: String) {
-        presentAlert(with: message, and: {_ in
+        presentAlert(with: message) { _ in
             self.navigationController?.popViewController(animated: true)
-        })
+        }
     }
 
     func showErrorMessage(with message: String) {
