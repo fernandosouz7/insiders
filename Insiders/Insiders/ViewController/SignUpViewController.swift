@@ -6,9 +6,10 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var signUpButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarIsHiddenFalse()
+        setupNavigation(isHidden: false)
         setupSignUpButton()
     }
     @IBAction func didTapSignUpButton(_ sender: Any) {

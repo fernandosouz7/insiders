@@ -5,8 +5,9 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarIsHiddenTrue()
+        setupNavigation(isHidden: true)
     }
+
     @IBAction private func didTapLogoutButton(_ sender: Any) {
     }
 }
