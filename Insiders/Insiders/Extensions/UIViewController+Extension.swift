@@ -10,5 +10,6 @@ extension UIViewController {
 
     func setupNavigation(isHidden: Bool) {
         navigationController?.navigationBar.isHidden = isHidden
+        navigationController?.navigationBar.tintColor =  UIColor(named: "Shamrock")
     }
 }
