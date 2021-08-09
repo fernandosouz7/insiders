@@ -79,33 +79,46 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DE382ECB26B43CDA009FD6C1 /* ViewModel */ = {
+		DE11C90A26C165480009D733 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */,
+				DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */,
 				DE382ECC26B43CDA009FD6C1 /* LoginViewModel.swift */,
 			);
-			path = ViewModel;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		DE382ECE26B43CFE009FD6C1 /* ViewController */ = {
+		DE11C90B26C1658C0009D733 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				DE382ECF26B43CFE009FD6C1 /* SignUpViewController.swift */,
+				DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		DE11C90C26C165A40009D733 /* RecoverPassword */ = {
+			isa = PBXGroup;
+			children = (
+				DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */,
+			);
+			path = RecoverPassword;
+			sourceTree = "<group>";
+		};
+		DE11C90D26C165B80009D733 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				DE382ED226B43CFE009FD6C1 /* StartViewController.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		DE11C90E26C165C80009D733 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */,
-				DE382ECF26B43CFE009FD6C1 /* SignUpViewController.swift */,
-				DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */,
-				DE382ED226B43CFE009FD6C1 /* StartViewController.swift */,
-				DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */,
 			);
-			name = ViewController;
-			path = Insiders/ViewController;
-			sourceTree = SOURCE_ROOT;
-		};
-		DE382ED926B43D0C009FD6C1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		DE4324EE2693AE3300AFE3AD = {
@@ -137,9 +150,6 @@
 				DE382EDE26B43D60009FD6C1 /* Home.storyboard */,
 				DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */,
 				DE4325032693AE3400AFE3AD /* Assets.xcassets */,
-				DE382ED926B43D0C009FD6C1 /* Model */,
-				DE382ECE26B43CFE009FD6C1 /* ViewController */,
-				DE382ECB26B43CDA009FD6C1 /* ViewModel */,
 				DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */,
 				DE4325082693AE3400AFE3AD /* Info.plist */,
 				DE981D3C26BD7234009B1EFC /* Colors.xcassets */,
@@ -150,6 +160,11 @@
 		DE981D4126BD9F41009B1EFC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DE11C90E26C165C80009D733 /* Home */,
+				DE11C90D26C165B80009D733 /* Start */,
+				DE11C90C26C165A40009D733 /* RecoverPassword */,
+				DE11C90B26C1658C0009D733 /* SignUp */,
+				DE11C90A26C165480009D733 /* Login */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
