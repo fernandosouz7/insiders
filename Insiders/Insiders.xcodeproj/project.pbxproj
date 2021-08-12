@@ -14,6 +14,7 @@
 		DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */; };
 		DE382EDF26B43D60009FD6C1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE382EDE26B43D60009FD6C1 /* Home.storyboard */; };
 		DE382EE126B44143009FD6C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */; };
+		DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B082026C40EA4001008C9 /* String+Extension.swift */; };
 		DE4324FB2693AE3300AFE3AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */; };
 		DE4324FD2693AE3300AFE3AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */; };
 		DE4325022693AE3300AFE3AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4325002693AE3300AFE3AD /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DE382EDE26B43D60009FD6C1 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE3B082026C40EA4001008C9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		DE4324F72693AE3300AFE3AD /* Insiders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insiders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */,
+				DE3B082026C40EA4001008C9 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */,
+				DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */,
 				DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */,
 				DE382ED526B43CFE009FD6C1 /* RecoverPasswordViewController.swift in Sources */,
 				DE382ED726B43CFE009FD6C1 /* StartViewController.swift in Sources */,
