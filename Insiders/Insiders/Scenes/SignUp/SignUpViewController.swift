@@ -23,13 +23,13 @@ final class SignUpViewController: UIViewController {
         setupGestureReconizer()
     }
 
-    @IBAction func didTapSignUpButton(_ sender: Any) {
+    @IBAction private func didTapSignUpButton(_ sender: Any) {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         viewModel?.createUser(with: email, and: password)
     }
 
-    @IBAction func didTapLoginButton(_ sender: Any) {
+    @IBAction private func didTapLoginButton(_ sender: Any) {
 
     }
 
