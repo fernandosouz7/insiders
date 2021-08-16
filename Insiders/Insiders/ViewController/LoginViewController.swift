@@ -26,9 +26,16 @@ final class LoginViewController: UIViewController {
         activityIndicator.startAnimating()
         loginViewModel.makeLogin(with: email, and: password)
     }
-
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let recoverPasswordViewController = segue.destination as? RecoverPasswordViewController {
+            recoverPasswordViewController.setupViewModel(
+                with: RecoverPasswordViewModel(
+                    delegate: recoverPasswordViewController as RecoverPasswordViewModelDelegate))
+        }
+    }
     // MARK: - Public functions
-    func create(with viewModel: LoginViewModel) {
+    func setupViewModel(with viewModel: LoginViewModel) {
         loginViewModel = viewModel
     }
 
