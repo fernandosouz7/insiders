@@ -56,12 +56,7 @@ final class SignUpViewController: UIViewController {
     }
 
     private func isErrorLabelHidden() -> Bool {
-        if fullNameErrorLabel.isHidden &&
-            emailErrorLabel.isHidden &&
-            passwordErrorLabel.isHidden {
-            return true
-        }
-        return false
+        fullNameErrorLabel.isHidden && emailErrorLabel.isHidden && passwordErrorLabel.isHidden
     }
 
     private func setupGestureReconizer() {
