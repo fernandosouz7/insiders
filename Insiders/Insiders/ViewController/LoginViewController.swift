@@ -29,13 +29,13 @@ final class LoginViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let recoverPasswordViewController = segue.destination as? RecoverPasswordViewController {
-            recoverPasswordViewController.create(
+            recoverPasswordViewController.setupViewModel(
                 with: RecoverPasswordViewModel(
                     delegate: recoverPasswordViewController as RecoverPasswordViewModelDelegate))
         }
     }
     // MARK: - Public functions
-    func create(with viewModel: LoginViewModel) {
+    func setupViewModel(with viewModel: LoginViewModel) {
         loginViewModel = viewModel
     }
 

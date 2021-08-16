@@ -21,7 +21,7 @@ final class StartViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let loginViewController = segue.destination as? LoginViewController {
-            loginViewController.create(with: LoginViewModel(delegate: loginViewController as LoginViewModelDelegate))
+            loginViewController.setupViewModel(with: LoginViewModel(delegate: loginViewController as LoginViewModelDelegate))
         }
     }
 
