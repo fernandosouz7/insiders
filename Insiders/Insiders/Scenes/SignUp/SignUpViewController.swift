@@ -2,8 +2,10 @@ import UIKit
 
 final class SignUpViewController: UIViewController {
 
+    // MARK: - Private Properties
     private var viewModel: SignUpViewModel?
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var fullNameTextField: UITextField! {
         didSet { fullNameTextField.delegate = self }}
     @IBOutlet private weak var emailTextField: UITextField! {
@@ -15,27 +17,26 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var passwordErrorLabel: UILabel!
 
+    // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation(isHidden: false)
-        setupSignUpButton()
-        fullNameTextField.becomeFirstResponder()
+        setupSignUpButtonAndFullNameTextField()
         setupGestureReconizer()
     }
 
+    // MARK: - IBActions
     @IBAction private func didTapSignUpButton(_ sender: Any) {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         viewModel?.createUser(with: email, and: password)
     }
 
-    @IBAction private func didTapLoginButton(_ sender: Any) {
-
-    }
-
-    private func setupSignUpButton() {
+    // MARK: - Private func
+    private func setupSignUpButtonAndFullNameTextField() {
         signUpButton.layer.cornerRadius = 15
         disableSignUpButton()
+        fullNameTextField.becomeFirstResponder()
     }
 
     private func enableSignUpButton() {
@@ -64,7 +65,7 @@ final class SignUpViewController: UIViewController {
     }
 
     private func setupGestureReconizer() {
-        let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         view.addGestureRecognizer(tapGestureReconizer)
     }
 
@@ -72,7 +73,8 @@ final class SignUpViewController: UIViewController {
         view.endEditing(true)
     }
 
-    func create(with viewModel: SignUpViewModel) {
+    // MARK: - Public functions
+    func setupViewModel(with viewModel: SignUpViewModel) {
         self.viewModel = viewModel
     }
 }

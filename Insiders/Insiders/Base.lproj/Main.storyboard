@@ -317,9 +317,6 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.09336254746" green="0.83745235200000001" blue="0.60255318879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="didTapLoginButton:" destination="qaN-oh-2of" eventType="touchUpInside" id="JH4-bi-v1f"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already a member?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ1-vb-FIK">
                                 <rect key="frame" x="133" y="624" width="109.5" height="27"/>
@@ -434,7 +431,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IEV-28-WHh"/>
+        <segue reference="k4I-cv-LlQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LogoInsider" width="370.5" height="500"/>

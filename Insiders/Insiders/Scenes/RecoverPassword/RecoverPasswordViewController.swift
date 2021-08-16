@@ -8,7 +8,7 @@ final class RecoverPasswordViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
-    
+
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

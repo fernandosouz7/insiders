@@ -24,7 +24,7 @@ final class StartViewController: UIViewController {
             loginViewController.setupViewModel(with: LoginViewModel(delegate: loginViewController as LoginViewModelDelegate))
         }
         if let signUpViewController = segue.destination as? SignUpViewController {
-            signUpViewController.create(
+            signUpViewController.setupViewModel(
                 with: SignUpViewModel(
                     delegate: signUpViewController as SignUpViewModelDelegate))
         }
