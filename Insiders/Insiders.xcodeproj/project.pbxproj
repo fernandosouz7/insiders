@@ -23,6 +23,7 @@
 		DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */; };
 		DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */; };
 		DE981D3D26BD7234009B1EFC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE981D3C26BD7234009B1EFC /* Colors.xcassets */; };
+		DEC7A39B26CA96760008080E /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7A39A26CA96760008080E /* RecoverPasswordViewModel.swift */; };
 		DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */; };
 		FAADE51734D358790482E43A /* Pods_Insiders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E9BC2FC151792953FFDBE8 /* Pods_Insiders.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DE981D3C26BD7234009B1EFC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		DEC7A39A26CA96760008080E /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */,
+				DEC7A39A26CA96760008080E /* RecoverPasswordViewModel.swift */,
 				DE382ECC26B43CDA009FD6C1 /* LoginViewModel.swift */,
 			);
 			path = Login;
@@ -152,6 +155,8 @@
 				DE382EDE26B43D60009FD6C1 /* Home.storyboard */,
 				DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */,
 				DE4325032693AE3400AFE3AD /* Assets.xcassets */,
+				DE382ECE26B43CFE009FD6C1 /* ViewController */,
+				DE382ECB26B43CDA009FD6C1 /* ViewModel */,
 				DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */,
 				DE4325082693AE3400AFE3AD /* Info.plist */,
 				DE981D3C26BD7234009B1EFC /* Colors.xcassets */,
@@ -315,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC7A39B26CA96760008080E /* RecoverPasswordViewModel.swift in Sources */,
 				DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */,
 				DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */,
 				DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */,

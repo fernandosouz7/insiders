@@ -407,6 +407,9 @@
                                         <state key="normal" title="Send">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didTapSendButton:" destination="rwm-kl-7hy" eventType="touchUpInside" id="Tz5-7d-OBf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -421,6 +424,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recover Password" id="b5f-Yu-ye9"/>
                     <connections>
+                        <outlet property="emailTextField" destination="DLM-ff-Lso" id="aIN-wn-cd9"/>
                         <outlet property="sendButton" destination="6xE-LI-gB2" id="nIX-8O-b8k"/>
                     </connections>
                 </viewController>
