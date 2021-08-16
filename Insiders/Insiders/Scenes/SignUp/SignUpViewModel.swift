@@ -28,13 +28,13 @@ final class SignUpViewModel {
     }
 
     func validateEmail(with email: String) {
-        if !email.isEmail {
+        if !email.isEmailValid {
             delegate?.showEmailErrorMessage(with: "Please enter a valid email address.")
         }
     }
 
     func validatePassword(with password: String) {
-        if !password.isValidPassword {
+        if !password.isPasswordValid {
             delegate?.showPasswordErrorMessage(with: "The password must be 6 characters long or more.")
         }
     }

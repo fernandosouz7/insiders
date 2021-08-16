@@ -40,7 +40,7 @@ final class SignUpViewController: UIViewController {
     }
 
     private func enableSignUpButton() {
-        if errorLabelIsHidden() &&
+        if isErrorLabelHidden() &&
             !(passwordTextField.text?.isEmpty ?? true) &&
             !(emailTextField.text?.isEmpty ?? true) {
             signUpButton.isHighlighted = false
@@ -55,7 +55,7 @@ final class SignUpViewController: UIViewController {
         signUpButton.layer.backgroundColor = UIColor.systemGray6.cgColor
     }
 
-    private func errorLabelIsHidden() -> Bool {
+    private func isErrorLabelHidden() -> Bool {
         if fullNameErrorLabel.isHidden &&
             emailErrorLabel.isHidden &&
             passwordErrorLabel.isHidden {

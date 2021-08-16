@@ -1,7 +1,7 @@
 import UIKit
 
 extension String {
-    var isEmail: Bool {
+    var isEmailValid: Bool {
         do {
             let emailPattern = #"^\S+@\S+\.\S+$"#
             let regex = try NSRegularExpression(pattern: emailPattern, options: .caseInsensitive)
@@ -12,7 +12,7 @@ extension String {
         }
     }
 
-    var isValidPassword: Bool {
+    var isPasswordValid: Bool {
         do {
             let passwordPattern = #"(?=.{6,})"#
             let regex = try NSRegularExpression(pattern: passwordPattern, options: [])
