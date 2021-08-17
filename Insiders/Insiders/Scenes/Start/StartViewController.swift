@@ -23,6 +23,11 @@ final class StartViewController: UIViewController {
         if let loginViewController = segue.destination as? LoginViewController {
             loginViewController.setupViewModel(with: LoginViewModel(delegate: loginViewController as LoginViewModelDelegate))
         }
+        if let signUpViewController = segue.destination as? SignUpViewController {
+            signUpViewController.setupViewModel(
+                with: SignUpViewModel(
+                    delegate: signUpViewController as SignUpViewModelDelegate))
+        }
     }
 
     // MARK: - Private func

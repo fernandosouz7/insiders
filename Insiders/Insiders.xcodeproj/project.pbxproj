@@ -10,17 +10,20 @@
 		DE382ECD26B43CDA009FD6C1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ECC26B43CDA009FD6C1 /* LoginViewModel.swift */; };
 		DE382ED426B43CFE009FD6C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ECF26B43CFE009FD6C1 /* SignUpViewController.swift */; };
 		DE382ED526B43CFE009FD6C1 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */; };
-		DE382ED626B43CFE009FD6C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ED126B43CFE009FD6C1 /* HomeViewController.swift */; };
 		DE382ED726B43CFE009FD6C1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ED226B43CFE009FD6C1 /* StartViewController.swift */; };
 		DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */; };
 		DE382EDF26B43D60009FD6C1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE382EDE26B43D60009FD6C1 /* Home.storyboard */; };
 		DE382EE126B44143009FD6C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */; };
+		DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B082026C40EA4001008C9 /* String+Extension.swift */; };
 		DE4324FB2693AE3300AFE3AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */; };
 		DE4324FD2693AE3300AFE3AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */; };
 		DE4325022693AE3300AFE3AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4325002693AE3300AFE3AD /* Main.storyboard */; };
 		DE4325042693AE3400AFE3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4325032693AE3400AFE3AD /* Assets.xcassets */; };
 		DE4325072693AE3400AFE3AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */; };
-		DEC7A39B26CA96760008080E /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7A39A26CA96760008080E /* RecoverPasswordViewModel.swift */; };
+		DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */; };
+		DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */; };
+		DE981D3D26BD7234009B1EFC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE981D3C26BD7234009B1EFC /* Colors.xcassets */; };
+		DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */; };
 		DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */; };
 		FAADE51734D358790482E43A /* Pods_Insiders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E9BC2FC151792953FFDBE8 /* Pods_Insiders.framework */; };
 /* End PBXBuildFile section */
@@ -32,11 +35,11 @@
 		DE382ECC26B43CDA009FD6C1 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DE382ECF26B43CFE009FD6C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
-		DE382ED126B43CFE009FD6C1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DE382ED226B43CFE009FD6C1 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DE382EDE26B43D60009FD6C1 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE3B082026C40EA4001008C9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		DE4324F72693AE3300AFE3AD /* Insiders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insiders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +47,10 @@
 		DE4325032693AE3400AFE3AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE4325062693AE3400AFE3AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE4325082693AE3400AFE3AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DEC7A39A26CA96760008080E /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
+		DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DE981D3C26BD7234009B1EFC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,27 +83,48 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DE382ECB26B43CDA009FD6C1 /* ViewModel */ = {
+		DE11C90A26C165480009D733 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				DEC7A39A26CA96760008080E /* RecoverPasswordViewModel.swift */,
+				DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */,
 				DE382ECC26B43CDA009FD6C1 /* LoginViewModel.swift */,
 			);
-			path = ViewModel;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		DE382ECE26B43CFE009FD6C1 /* ViewController */ = {
+		DE11C90B26C1658C0009D733 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				DE382ECF26B43CFE009FD6C1 /* SignUpViewController.swift */,
-				DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */,
-				DE382ED126B43CFE009FD6C1 /* HomeViewController.swift */,
-				DE382ED226B43CFE009FD6C1 /* StartViewController.swift */,
-				DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */,
+				DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */,
 			);
-			name = ViewController;
-			path = Insiders/ViewController;
-			sourceTree = SOURCE_ROOT;
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		DE11C90C26C165A40009D733 /* RecoverPassword */ = {
+			isa = PBXGroup;
+			children = (
+				DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */,
+				DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */,
+			);
+			path = RecoverPassword;
+			sourceTree = "<group>";
+		};
+		DE11C90D26C165B80009D733 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				DE382ED226B43CFE009FD6C1 /* StartViewController.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		DE11C90E26C165C80009D733 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
 		};
 		DE4324EE2693AE3300AFE3AD = {
 			isa = PBXGroup;
@@ -120,6 +147,7 @@
 		DE4324F92693AE3300AFE3AD /* Insiders */ = {
 			isa = PBXGroup;
 			children = (
+				DE981D4126BD9F41009B1EFC /* Scenes */,
 				DED09EBE26B819C3006E93E4 /* Extensions */,
 				DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */,
 				DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */,
@@ -127,18 +155,30 @@
 				DE382EDE26B43D60009FD6C1 /* Home.storyboard */,
 				DE382EE026B44143009FD6C1 /* GoogleService-Info.plist */,
 				DE4325032693AE3400AFE3AD /* Assets.xcassets */,
-				DE382ECE26B43CFE009FD6C1 /* ViewController */,
-				DE382ECB26B43CDA009FD6C1 /* ViewModel */,
 				DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */,
 				DE4325082693AE3400AFE3AD /* Info.plist */,
+				DE981D3C26BD7234009B1EFC /* Colors.xcassets */,
 			);
 			path = Insiders;
+			sourceTree = "<group>";
+		};
+		DE981D4126BD9F41009B1EFC /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DE11C90E26C165C80009D733 /* Home */,
+				DE11C90D26C165B80009D733 /* Start */,
+				DE11C90C26C165A40009D733 /* RecoverPassword */,
+				DE11C90B26C1658C0009D733 /* SignUp */,
+				DE11C90A26C165480009D733 /* Login */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		DED09EBE26B819C3006E93E4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */,
+				DE3B082026C40EA4001008C9 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +246,7 @@
 				DE4325072693AE3400AFE3AD /* LaunchScreen.storyboard in Resources */,
 				DE4325042693AE3400AFE3AD /* Assets.xcassets in Resources */,
 				DE382EE126B44143009FD6C1 /* GoogleService-Info.plist in Resources */,
+				DE981D3D26BD7234009B1EFC /* Colors.xcassets in Resources */,
 				DE4325022693AE3300AFE3AD /* Main.storyboard in Resources */,
 				DE382EDF26B43D60009FD6C1 /* Home.storyboard in Resources */,
 			);
@@ -277,15 +318,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEC7A39B26CA96760008080E /* RecoverPasswordViewModel.swift in Sources */,
 				DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */,
+				DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */,
 				DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */,
 				DE382ED526B43CFE009FD6C1 /* RecoverPasswordViewController.swift in Sources */,
 				DE382ED726B43CFE009FD6C1 /* StartViewController.swift in Sources */,
 				DE382ECD26B43CDA009FD6C1 /* LoginViewModel.swift in Sources */,
+				DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */,
+				DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */,
 				DE4324FB2693AE3300AFE3AD /* AppDelegate.swift in Sources */,
 				DE4324FD2693AE3300AFE3AD /* SceneDelegate.swift in Sources */,
-				DE382ED626B43CFE009FD6C1 /* HomeViewController.swift in Sources */,
+				DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */,
 				DE382ED426B43CFE009FD6C1 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
