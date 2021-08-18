@@ -2,6 +2,7 @@ import UIKit
 
 final class StartViewController: UIViewController {
 
+    var coordinator: StartCooordinator?
     // MARK: - IBOutlets
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!

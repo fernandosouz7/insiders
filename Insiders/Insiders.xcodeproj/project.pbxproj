@@ -24,6 +24,9 @@
 		DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */; };
 		DE981D3D26BD7234009B1EFC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE981D3C26BD7234009B1EFC /* Colors.xcassets */; };
 		DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */; };
+		DEC8135F26CC28B2002CCC10 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8135E26CC28B2002CCC10 /* Coordinator.swift */; };
+		DEC8136126CC2962002CCC10 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */; };
+		DEC8136326CC2A51002CCC10 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */; };
 		DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */; };
 		FAADE51734D358790482E43A /* Pods_Insiders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E9BC2FC151792953FFDBE8 /* Pods_Insiders.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +54,9 @@
 		DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DE981D3C26BD7234009B1EFC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
+		DEC8135E26CC28B2002CCC10 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				DE382ED226B43CFE009FD6C1 /* StartViewController.swift */,
+				DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 			children = (
 				DE981D4126BD9F41009B1EFC /* Scenes */,
 				DED09EBE26B819C3006E93E4 /* Extensions */,
+				DEC8135E26CC28B2002CCC10 /* Coordinator.swift */,
 				DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */,
 				DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */,
 				DE4325002693AE3300AFE3AD /* Main.storyboard */,
@@ -158,6 +166,7 @@
 				DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */,
 				DE4325082693AE3400AFE3AD /* Info.plist */,
 				DE981D3C26BD7234009B1EFC /* Colors.xcassets */,
+				DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */,
 			);
 			path = Insiders;
 			sourceTree = "<group>";
@@ -320,16 +329,19 @@
 			files = (
 				DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */,
 				DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */,
+				DEC8135F26CC28B2002CCC10 /* Coordinator.swift in Sources */,
 				DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */,
 				DE382ED526B43CFE009FD6C1 /* RecoverPasswordViewController.swift in Sources */,
 				DE382ED726B43CFE009FD6C1 /* StartViewController.swift in Sources */,
 				DE382ECD26B43CDA009FD6C1 /* LoginViewModel.swift in Sources */,
+				DEC8136326CC2A51002CCC10 /* StartCoordinator.swift in Sources */,
 				DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */,
 				DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */,
 				DE4324FB2693AE3300AFE3AD /* AppDelegate.swift in Sources */,
 				DE4324FD2693AE3300AFE3AD /* SceneDelegate.swift in Sources */,
 				DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */,
 				DE382ED426B43CFE009FD6C1 /* SignUpViewController.swift in Sources */,
+				DEC8136126CC2962002CCC10 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
