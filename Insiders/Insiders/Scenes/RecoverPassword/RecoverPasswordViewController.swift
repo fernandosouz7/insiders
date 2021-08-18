@@ -1,6 +1,6 @@
 import UIKit
 
-final class RecoverPasswordViewController: UIViewController {
+final class RecoverPasswordViewController: BaseViewController {
 
     // MARK: - Private Properties
     private var recoverPasswordViewModel: RecoverPasswordViewModel?
@@ -12,6 +12,7 @@ final class RecoverPasswordViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupSendButton()
     }
 
@@ -30,6 +31,10 @@ final class RecoverPasswordViewController: UIViewController {
     // MARK: - Private func
     private func setupSendButton() {
         sendButton.layer.cornerRadius = 15
+    }
+
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

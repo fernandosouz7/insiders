@@ -1,6 +1,6 @@
 import UIKit
 
-final class SignUpViewController: UIViewController {
+final class SignUpViewController: BaseViewController {
 
     // MARK: - Private Properties
     private var viewModel: SignUpViewModel?
@@ -20,6 +20,7 @@ final class SignUpViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
         setupSignUpButtonAndFullNameTextField()
         setupGestureReconizer()
@@ -66,6 +67,10 @@ final class SignUpViewController: UIViewController {
 
     @objc private func didTapView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+
+    @objc private func didTapBackButton() {
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // MARK: - Public functions

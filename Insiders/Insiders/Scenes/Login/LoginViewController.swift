@@ -1,7 +1,8 @@
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController {
 
+    var coordinator: LoginCoordinator?
     // MARK: - Private Properties
     private var loginViewModel: LoginViewModel?
 
@@ -14,6 +15,7 @@ final class LoginViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
         setupLoginButton()
     }
@@ -26,13 +28,13 @@ final class LoginViewController: UIViewController {
         activityIndicator.startAnimating()
         loginViewModel.makeLogin(with: email, and: password)
     }
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let recoverPasswordViewController = segue.destination as? RecoverPasswordViewController {
-            recoverPasswordViewController.setupViewModel(
-                with: RecoverPasswordViewModel(
-                    delegate: recoverPasswordViewController as RecoverPasswordViewModelDelegate))
-        }
+
+    @IBAction func didTapForgotPasswordButton(_ sender: Any) {
+        coordinator?.pushRecoverPasswordViewController()
+    }
+
+    @IBAction func didTapSignUpButton(_ sender: Any) {
+        coordinator?.pushSignUpViewController()
     }
     // MARK: - Public functions
     func setupViewModel(with viewModel: LoginViewModel) {
@@ -42,6 +44,10 @@ final class LoginViewController: UIViewController {
     // MARK: - Private func
     private func setupLoginButton() {
         loginButton.layer.cornerRadius = 15
+    }
+
+    @objc private func didTapBackButton() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 

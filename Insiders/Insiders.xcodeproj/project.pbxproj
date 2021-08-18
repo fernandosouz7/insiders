@@ -17,7 +17,6 @@
 		DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B082026C40EA4001008C9 /* String+Extension.swift */; };
 		DE4324FB2693AE3300AFE3AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */; };
 		DE4324FD2693AE3300AFE3AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */; };
-		DE4325022693AE3300AFE3AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4325002693AE3300AFE3AD /* Main.storyboard */; };
 		DE4325042693AE3400AFE3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4325032693AE3400AFE3AD /* Assets.xcassets */; };
 		DE4325072693AE3400AFE3AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */; };
 		DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */; };
@@ -26,8 +25,13 @@
 		DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */; };
 		DEC8135F26CC28B2002CCC10 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8135E26CC28B2002CCC10 /* Coordinator.swift */; };
 		DEC8136126CC2962002CCC10 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */; };
-		DEC8136326CC2A51002CCC10 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */; };
 		DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */; };
+		DEF6188C26CD488E00509D35 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */; };
+		DEF6188E26CD48FE00509D35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4325002693AE3300AFE3AD /* Main.storyboard */; };
+		DEFFD50326CD536A00B34A7B /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFFD50226CD536A00B34A7B /* SignUpCoordinator.swift */; };
+		DEFFD50526CD587400B34A7B /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFFD50426CD587400B34A7B /* LoginCoordinator.swift */; };
+		DEFFD50726CD5BA400B34A7B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFFD50626CD5BA400B34A7B /* BaseViewController.swift */; };
+		DEFFD50926CD656700B34A7B /* RecoverPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFFD50826CD656700B34A7B /* RecoverPasswordCoordinator.swift */; };
 		FAADE51734D358790482E43A /* Pods_Insiders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E9BC2FC151792953FFDBE8 /* Pods_Insiders.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +62,10 @@
 		DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		DED09EBF26B819F3006E93E4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		DEFFD50226CD536A00B34A7B /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		DEFFD50426CD587400B34A7B /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		DEFFD50626CD5BA400B34A7B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DEFFD50826CD656700B34A7B /* RecoverPasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 			children = (
 				DE382ED326B43CFE009FD6C1 /* LoginViewController.swift */,
 				DE382ECC26B43CDA009FD6C1 /* LoginViewModel.swift */,
+				DEFFD50426CD587400B34A7B /* LoginCoordinator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -103,6 +112,7 @@
 			children = (
 				DE382ECF26B43CFE009FD6C1 /* SignUpViewController.swift */,
 				DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */,
+				DEFFD50226CD536A00B34A7B /* SignUpCoordinator.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -112,6 +122,7 @@
 			children = (
 				DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */,
 				DE382ED026B43CFE009FD6C1 /* RecoverPasswordViewController.swift */,
+				DEFFD50826CD656700B34A7B /* RecoverPasswordCoordinator.swift */,
 			);
 			path = RecoverPassword;
 			sourceTree = "<group>";
@@ -167,6 +178,7 @@
 				DE4325082693AE3400AFE3AD /* Info.plist */,
 				DE981D3C26BD7234009B1EFC /* Colors.xcassets */,
 				DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */,
+				DEFFD50626CD5BA400B34A7B /* BaseViewController.swift */,
 			);
 			path = Insiders;
 			sourceTree = "<group>";
@@ -255,8 +267,8 @@
 				DE4325072693AE3400AFE3AD /* LaunchScreen.storyboard in Resources */,
 				DE4325042693AE3400AFE3AD /* Assets.xcassets in Resources */,
 				DE382EE126B44143009FD6C1 /* GoogleService-Info.plist in Resources */,
+				DEF6188E26CD48FE00509D35 /* Main.storyboard in Resources */,
 				DE981D3D26BD7234009B1EFC /* Colors.xcassets in Resources */,
-				DE4325022693AE3300AFE3AD /* Main.storyboard in Resources */,
 				DE382EDF26B43D60009FD6C1 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,18 +339,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEFFD50526CD587400B34A7B /* LoginCoordinator.swift in Sources */,
 				DE382ED826B43CFE009FD6C1 /* LoginViewController.swift in Sources */,
 				DE3B082126C40EA4001008C9 /* String+Extension.swift in Sources */,
 				DEC8135F26CC28B2002CCC10 /* Coordinator.swift in Sources */,
 				DED09EC026B819F3006E93E4 /* UIViewController+Extension.swift in Sources */,
+				DEFFD50726CD5BA400B34A7B /* BaseViewController.swift in Sources */,
 				DE382ED526B43CFE009FD6C1 /* RecoverPasswordViewController.swift in Sources */,
+				DEFFD50926CD656700B34A7B /* RecoverPasswordCoordinator.swift in Sources */,
 				DE382ED726B43CFE009FD6C1 /* StartViewController.swift in Sources */,
 				DE382ECD26B43CDA009FD6C1 /* LoginViewModel.swift in Sources */,
-				DEC8136326CC2A51002CCC10 /* StartCoordinator.swift in Sources */,
+				DEF6188C26CD488E00509D35 /* StartCoordinator.swift in Sources */,
 				DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */,
 				DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */,
 				DE4324FB2693AE3300AFE3AD /* AppDelegate.swift in Sources */,
 				DE4324FD2693AE3300AFE3AD /* SceneDelegate.swift in Sources */,
+				DEFFD50326CD536A00B34A7B /* SignUpCoordinator.swift in Sources */,
 				DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */,
 				DE382ED426B43CFE009FD6C1 /* SignUpViewController.swift in Sources */,
 				DEC8136126CC2962002CCC10 /* ApplicationCoordinator.swift in Sources */,
