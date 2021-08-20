@@ -1,6 +1,6 @@
 import UIKit
 
-final class LoginViewController: BaseViewController {
+final class LoginViewController: BaseViewController, Storyboardable {
 
     var coordinator: LoginCoordinator?
     // MARK: - Private Properties
@@ -36,6 +36,7 @@ final class LoginViewController: BaseViewController {
     @IBAction func didTapSignUpButton(_ sender: Any) {
         coordinator?.pushSignUpViewController()
     }
+
     // MARK: - Public functions
     func setupViewModel(with viewModel: LoginViewModel) {
         loginViewModel = viewModel
@@ -47,7 +48,7 @@ final class LoginViewController: BaseViewController {
     }
 
     @objc private func didTapBackButton() {
-        navigationController?.popToRootViewController(animated: true)
+        coordinator?.didFinishLogin()
     }
 }
 

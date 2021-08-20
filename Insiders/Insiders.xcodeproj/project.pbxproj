@@ -22,6 +22,7 @@
 		DE981D3926BD6AE1009B1EFC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */; };
 		DE981D3B26BD6B0E009B1EFC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */; };
 		DE981D3D26BD7234009B1EFC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE981D3C26BD7234009B1EFC /* Colors.xcassets */; };
+		DEB0FBBA26CEB02800004086 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB0FBB926CEB02800004086 /* Storyboardable.swift */; };
 		DEC7A39D26CA9A830008080E /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */; };
 		DEC8135F26CC28B2002CCC10 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8135E26CC28B2002CCC10 /* Coordinator.swift */; };
 		DEC8136126CC2962002CCC10 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */; };
@@ -57,6 +58,7 @@
 		DE981D3826BD6AE1009B1EFC /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DE981D3A26BD6B0E009B1EFC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DE981D3C26BD7234009B1EFC /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		DEB0FBB926CEB02800004086 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		DEC7A39C26CA9A830008080E /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		DEC8135E26CC28B2002CCC10 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
@@ -165,9 +167,9 @@
 		DE4324F92693AE3300AFE3AD /* Insiders */ = {
 			isa = PBXGroup;
 			children = (
+				DEB0FBB826CEB00600004086 /* Protocols */,
 				DE981D4126BD9F41009B1EFC /* Scenes */,
 				DED09EBE26B819C3006E93E4 /* Extensions */,
-				DEC8135E26CC28B2002CCC10 /* Coordinator.swift */,
 				DE4324FA2693AE3300AFE3AD /* AppDelegate.swift */,
 				DE4324FC2693AE3300AFE3AD /* SceneDelegate.swift */,
 				DE4325002693AE3300AFE3AD /* Main.storyboard */,
@@ -177,7 +179,6 @@
 				DE4325052693AE3400AFE3AD /* LaunchScreen.storyboard */,
 				DE4325082693AE3400AFE3AD /* Info.plist */,
 				DE981D3C26BD7234009B1EFC /* Colors.xcassets */,
-				DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */,
 				DEFFD50626CD5BA400B34A7B /* BaseViewController.swift */,
 			);
 			path = Insiders;
@@ -186,6 +187,7 @@
 		DE981D4126BD9F41009B1EFC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */,
 				DE11C90E26C165C80009D733 /* Home */,
 				DE11C90D26C165B80009D733 /* Start */,
 				DE11C90C26C165A40009D733 /* RecoverPassword */,
@@ -193,6 +195,15 @@
 				DE11C90A26C165480009D733 /* Login */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DEB0FBB826CEB00600004086 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DEC8135E26CC28B2002CCC10 /* Coordinator.swift */,
+				DEB0FBB926CEB02800004086 /* Storyboardable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		DED09EBE26B819C3006E93E4 /* Extensions */ = {
@@ -347,6 +358,7 @@
 				DEFFD50726CD5BA400B34A7B /* BaseViewController.swift in Sources */,
 				DE382ED526B43CFE009FD6C1 /* RecoverPasswordViewController.swift in Sources */,
 				DEFFD50926CD656700B34A7B /* RecoverPasswordCoordinator.swift in Sources */,
+				DEB0FBBA26CEB02800004086 /* Storyboardable.swift in Sources */,
 				DE382ED726B43CFE009FD6C1 /* StartViewController.swift in Sources */,
 				DE382ECD26B43CDA009FD6C1 /* LoginViewModel.swift in Sources */,
 				DEF6188C26CD488E00509D35 /* StartCoordinator.swift in Sources */,

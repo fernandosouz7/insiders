@@ -1,17 +1,16 @@
 import UIKit
 
 final class LoginCoordinator: Coordinator {
-
+//    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+//    weak var parentCoordinator: StartCooordinator?
 
     init(navigationController: UINavigationController) {
         self.navigationController  = navigationController
     }
 
     func start() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-                as? LoginViewController else { return }
+        let loginViewController = LoginViewController.instantiate()
         loginViewController.setupViewModel(
             with: LoginViewModel(
                 delegate: loginViewController as LoginViewModelDelegate))
@@ -27,5 +26,10 @@ final class LoginCoordinator: Coordinator {
     func pushSignUpViewController() {
         let signUpCoordinator = SignUpCoordinator(navigationController: navigationController)
         signUpCoordinator.start()
+    }
+
+    func didFinishLogin() {
+//        parentCoordinator?.childDidFinish(self)
+        navigationController.popToRootViewController(animated: true)
     }
 }

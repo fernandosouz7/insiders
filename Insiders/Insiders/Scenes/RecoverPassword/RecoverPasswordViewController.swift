@@ -1,10 +1,12 @@
 import UIKit
 
-final class RecoverPasswordViewController: BaseViewController {
-
+final class RecoverPasswordViewController: BaseViewController, Storyboardable {
     // MARK: - Private Properties
-    private var recoverPasswordViewModel: RecoverPasswordViewModel?
-
+    private var viewModel: RecoverPasswordViewModel? {
+        didSet {
+            viewModel?.viewDelegate = self
+        }
+    }
     // MARK: - IBOutlets
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -19,13 +21,13 @@ final class RecoverPasswordViewController: BaseViewController {
     // MARK: - IBActions
     @IBAction private func didTapSendButton(_ sender: Any) {
         guard let email = emailTextField.text,
-              let recoverPasswordViewModel = recoverPasswordViewModel else { return }
+              let recoverPasswordViewModel = viewModel else { return }
         recoverPasswordViewModel.sendPasswordReset(with: email)
     }
 
     // MARK: - Public functions
-    func setupViewModel(with viewModel: RecoverPasswordViewModel) {
-        recoverPasswordViewModel = viewModel
+    func setup(with viewModel: RecoverPasswordViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: - Private func
@@ -34,17 +36,14 @@ final class RecoverPasswordViewController: BaseViewController {
     }
 
     @objc private func didTapBackButton() {
-        navigationController?.popViewController(animated: true)
+        viewModel?.didFinish()
     }
 }
 
 // MARK: - Recover Password View Model Delegate
-extension RecoverPasswordViewController: RecoverPasswordViewModelDelegate {
-
-    func showSuccessMessage(with message: String) {
-        presentAlert(with: message) { _ in
-            self.navigationController?.popViewController(animated: true)
-        }
+extension RecoverPasswordViewController: RecoverPasswordViewModelViewDelegate {
+    func showSuccessMessage(with message: String, and handler: @escaping ((UIAlertAction) -> Void)) {
+        presentAlert(with: message, and: handler)
     }
 
     func showErrorMessage(with message: String) {

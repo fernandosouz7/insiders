@@ -1,6 +1,7 @@
 import UIKit
 
 class StartCooordinator: Coordinator {
+//    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -8,9 +9,7 @@ class StartCooordinator: Coordinator {
     }
 
     func start() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let startViewController = storyboard.instantiateViewController(withIdentifier: "StartViewController")
-                as? StartViewController else { return  }
+        let startViewController = StartViewController.instantiate()
         startViewController.coordinator = self
         navigationController.pushViewController(startViewController, animated: false)
     }
@@ -22,6 +21,17 @@ class StartCooordinator: Coordinator {
 
     func pushLoginViewController() {
         let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+//        loginCoordinator.parentCoordinator = self
+//        childCoordinators.append(loginCoordinator)
         loginCoordinator.start()
     }
+
+//    func childDidFinish(_ child: Coordinator?) {
+//        for (index, coordinator) in childCoordinators.enumerated() {
+//            if coordinator === child {
+//                childCoordinators.remove(at: index)
+//                break
+//            }
+//        }
+//    }
 }

@@ -1,6 +1,7 @@
 import UIKit
 
 final class SignUpCoordinator: Coordinator {
+    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {

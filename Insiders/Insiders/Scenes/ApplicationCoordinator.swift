@@ -1,7 +1,7 @@
 import UIKit
 
 class ApplicationCoordinator: Coordinator {
-
+//    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     private let window: UIWindow
     private var startCoordinator: StartCooordinator?

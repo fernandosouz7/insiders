@@ -1,6 +1,6 @@
 import UIKit
 
-final class StartViewController: UIViewController {
+final class StartViewController: UIViewController, Storyboardable {
 
     var coordinator: StartCooordinator?
     // MARK: - IBOutlets
