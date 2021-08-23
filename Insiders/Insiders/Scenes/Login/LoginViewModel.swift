@@ -1,26 +1,29 @@
 import UIKit
 import Firebase
 
-protocol LoginViewModelDelegate: AnyObject {
+protocol LoginViewModelViewDelegate: AnyObject {
 
     func showErrorMessage(with message: String)
     func didFinishLoginWithSuccess()
 }
 
+protocol LoginViewModelCoordinatorDelegate: AnyObject {
+    func pushRecoverPasswordViewController()
+    func pushSignUpViewController()
+    func didFinish()
+}
+
 final class LoginViewModel {
 
-    private weak var delegate: LoginViewModelDelegate?
-
-    init(delegate: LoginViewModelDelegate) {
-        self.delegate = delegate
-    }
+    weak var viewDelegate: LoginViewModelViewDelegate?
+    weak var coordinatorDelegate: LoginViewModelCoordinatorDelegate?
 
     func makeLogin(with email: String, and password: String) {
         switch getLoginCredentials(with: email, and: password) {
         case .correct:
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {
-                    self?.delegate?.didFinishLoginWithSuccess()
+                    self?.viewDelegate?.didFinishLoginWithSuccess()
                     return
                 }
                 self?.setupErrorMessage(with: error.localizedDescription)
@@ -28,6 +31,18 @@ final class LoginViewModel {
         case .incorrect(let message):
             setupErrorMessage(with: message)
         }
+    }
+
+    func showRecoverPasswordViewController() {
+        coordinatorDelegate?.pushRecoverPasswordViewController()
+    }
+
+    func showSignUpViewController() {
+        coordinatorDelegate?.pushSignUpViewController()
+    }
+
+    func didFinish() {
+        coordinatorDelegate?.didFinish()
     }
 
     private func getLoginCredentials(with email: String, and password: String) -> LoginCredentialsStatus {
@@ -44,7 +59,7 @@ final class LoginViewModel {
     }
 
     private func setupErrorMessage(with message: String) {
-        delegate?.showErrorMessage(with: message)
+        viewDelegate?.showErrorMessage(with: message)
     }
 }
 

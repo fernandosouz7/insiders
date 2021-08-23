@@ -1,9 +1,13 @@
 import UIKit
 
-final class SignUpViewController: BaseViewController {
+final class SignUpViewController: BaseViewController, Storyboardable {
 
     // MARK: - Private Properties
-    private var viewModel: SignUpViewModel?
+    private var viewModel: SignUpViewModel? {
+        didSet {
+            viewModel?.viewDelegate = self
+        }
+    }
 
     // MARK: - IBOutlets
     @IBOutlet private weak var fullNameTextField: UITextField! {
@@ -33,6 +37,9 @@ final class SignUpViewController: BaseViewController {
         viewModel?.createUser(with: email, and: password)
     }
 
+    @IBAction func didTapLoginButton(_ sender: Any) {
+        viewModel?.showLoginViewController()
+    }
     // MARK: - Private func
     private func setupSignUpButtonAndFullNameTextField() {
         signUpButton.layer.cornerRadius = 15
@@ -70,16 +77,16 @@ final class SignUpViewController: BaseViewController {
     }
 
     @objc private func didTapBackButton() {
-        navigationController?.popToRootViewController(animated: true)
+        viewModel?.didFinish()
     }
 
     // MARK: - Public functions
-    func setupViewModel(with viewModel: SignUpViewModel) {
+    func setup(with viewModel: SignUpViewModel) {
         self.viewModel = viewModel
     }
 }
 
-extension SignUpViewController: SignUpViewModelDelegate {
+extension SignUpViewController: SignUpViewModelViewDelegate {
 
     func showEmailErrorMessage(with message: String) {
         emailErrorLabel.isHidden = false
@@ -94,10 +101,6 @@ extension SignUpViewController: SignUpViewModelDelegate {
     func showFullNameErrorMessage(with message: String) {
         fullNameErrorLabel.isHidden = false
         fullNameErrorLabel.text = message
-    }
-
-    func didFinishSignUpWithSuccess() {
-        performSegue(withIdentifier: "signUpToHome", sender: self)
     }
 
     func showErrorMessage(with message: String) {

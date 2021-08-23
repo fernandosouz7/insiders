@@ -2,7 +2,7 @@ import UIKit
 
 final class StartViewController: UIViewController, Storyboardable {
 
-    var coordinator: StartCooordinator?
+    private var viewModel: StartViewModel?
     // MARK: - IBOutlets
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
@@ -20,10 +20,14 @@ final class StartViewController: UIViewController, Storyboardable {
     }
 
     @IBAction func didTapSignUpButton(_ sender: Any) {
-        coordinator?.pushSignUpViewController()
+        viewModel?.showSignUpViewController()
     }
     @IBAction func didTapLoginButton(_ sender: Any) {
-        coordinator?.pushLoginViewController()
+        viewModel?.showLoginViewController()
+    }
+
+    func setup(with viewModel: StartViewModel) {
+        self.viewModel = viewModel
     }
     // MARK: - Private func
     private func setupButtons() {

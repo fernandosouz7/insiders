@@ -2,9 +2,12 @@ import UIKit
 
 final class LoginViewController: BaseViewController, Storyboardable {
 
-    var coordinator: LoginCoordinator?
     // MARK: - Private Properties
-    private var loginViewModel: LoginViewModel?
+    private var viewModel: LoginViewModel? {
+        didSet {
+            viewModel?.viewDelegate = self
+        }
+    }
 
     // MARK: - IBOutlets
     @IBOutlet private weak var emailField: UITextField!
@@ -24,22 +27,22 @@ final class LoginViewController: BaseViewController, Storyboardable {
     @IBAction private func didTapLoginButton(_ sender: Any) {
         guard let email = emailField.text,
               let password = passwordField.text,
-              let loginViewModel = loginViewModel else { return }
+              let loginViewModel = viewModel else { return }
         activityIndicator.startAnimating()
         loginViewModel.makeLogin(with: email, and: password)
     }
 
     @IBAction func didTapForgotPasswordButton(_ sender: Any) {
-        coordinator?.pushRecoverPasswordViewController()
+        viewModel?.showRecoverPasswordViewController()
     }
 
     @IBAction func didTapSignUpButton(_ sender: Any) {
-        coordinator?.pushSignUpViewController()
+        viewModel?.showSignUpViewController()
     }
 
     // MARK: - Public functions
-    func setupViewModel(with viewModel: LoginViewModel) {
-        loginViewModel = viewModel
+    func setup(with viewModel: LoginViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: - Private func
@@ -48,11 +51,11 @@ final class LoginViewController: BaseViewController, Storyboardable {
     }
 
     @objc private func didTapBackButton() {
-        coordinator?.didFinishLogin()
+        viewModel?.didFinish()
     }
 }
 
-extension LoginViewController: LoginViewModelDelegate {
+extension LoginViewController: LoginViewModelViewDelegate {
 
     func showErrorMessage(with message: String) {
         activityIndicator.stopAnimating()
@@ -61,6 +64,6 @@ extension LoginViewController: LoginViewModelDelegate {
 
     func didFinishLoginWithSuccess() {
         activityIndicator.stopAnimating()
-        performSegue(withIdentifier: "loginToHome", sender: self)
+//        performSegue(withIdentifier: "loginToHome", sender: self)
     }
 }
