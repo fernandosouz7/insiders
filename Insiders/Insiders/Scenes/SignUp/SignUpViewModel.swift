@@ -11,6 +11,7 @@ protocol SignUpViewModelViewDelegate: AnyObject {
 protocol SignUpViewModelCoordinatorDelegate: AnyObject {
     func didFinish()
     func pushLoginViewController()
+    func pushNoUserTypeViewController()
 }
 
 final class SignUpViewModel {
@@ -21,7 +22,7 @@ final class SignUpViewModel {
     func createUser(with email: String, and password: String) {
         Auth.auth().createUser(withEmail: email, password: password) {_, error in
             guard let error = error else {
-                self.viewDelegate?.didFinishSignUpWithSuccess()
+                self.didFinishSignUpWithSuccess()
                 return
             }
             self.viewDelegate?.showErrorMessage(with: error.localizedDescription)
@@ -53,8 +54,8 @@ final class SignUpViewModel {
     func didFinish() {
         coordinator?.didFinish()
     }
-    
+
     func didFinishSignUpWithSuccess() {
-        
+        coordinator?.pushNoUserTypeViewController()
     }
 }

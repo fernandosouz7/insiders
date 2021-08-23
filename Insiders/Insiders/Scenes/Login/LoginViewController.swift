@@ -64,6 +64,5 @@ extension LoginViewController: LoginViewModelViewDelegate {
 
     func didFinishLoginWithSuccess() {
         activityIndicator.stopAnimating()
-//        performSegue(withIdentifier: "loginToHome", sender: self)
     }
 }

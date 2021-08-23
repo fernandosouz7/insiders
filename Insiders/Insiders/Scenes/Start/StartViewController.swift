@@ -1,6 +1,6 @@
 import UIKit
 
-final class StartViewController: UIViewController, Storyboardable {
+final class StartViewController: BaseViewController, Storyboardable {
 
     private var viewModel: StartViewModel?
     // MARK: - IBOutlets

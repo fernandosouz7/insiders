@@ -11,6 +11,7 @@ protocol LoginViewModelCoordinatorDelegate: AnyObject {
     func pushRecoverPasswordViewController()
     func pushSignUpViewController()
     func didFinish()
+    func pushNoUserTypeViewController()
 }
 
 final class LoginViewModel {
@@ -24,6 +25,7 @@ final class LoginViewModel {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {
                     self?.viewDelegate?.didFinishLoginWithSuccess()
+                    self?.coordinatorDelegate?.pushNoUserTypeViewController()
                     return
                 }
                 self?.setupErrorMessage(with: error.localizedDescription)

@@ -23,6 +23,11 @@ class StartCooordinator: Coordinator {
             navigationController.popToRootViewController(animated: true)
         }
     }
+
+    func pushNoUserTypeViewController() {
+        let noUserTypeViewController = NoUserTypeViewController()
+        navigationController.pushViewController(noUserTypeViewController, animated: true)
+    }
 }
 
 extension StartCooordinator: StartViewModelCoordinatorDelegate {
