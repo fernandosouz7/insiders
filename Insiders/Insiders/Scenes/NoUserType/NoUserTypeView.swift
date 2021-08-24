@@ -1,4 +1,5 @@
 import UIKit
+import Cartography
 
 class NoUserTypeView: UIView {
 
@@ -19,14 +20,10 @@ class NoUserTypeView: UIView {
     }
 
     private func setupConstraints() {
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-            textLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor)
-        ])
+        constrain(textLabel) { textLabel in
+            textLabel.center == textLabel.superview!.center
+        }
     }
 
     private func configureViews() {

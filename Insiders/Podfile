@@ -7,8 +7,10 @@ target 'Insiders' do
 
   # Pods for Insiders
   pod 'SwiftLint'
+
+  pod 'Cartography', '~> 4.0.0'
+
   pod 'Firebase/Analytics'
-  
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
