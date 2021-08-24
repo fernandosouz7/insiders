@@ -14,20 +14,6 @@ class StartCooordinator: Coordinator {
         startViewController.setup(with: startViewModel)
         navigationController.pushViewController(startViewController, animated: false)
     }
-
-    func didFinish() {
-        switch navigationController.visibleViewController {
-        case is RecoverPasswordViewController:
-            navigationController.popViewController(animated: true)
-        default:
-            navigationController.popToRootViewController(animated: true)
-        }
-    }
-
-    func pushNoUserTypeViewController() {
-        let noUserTypeViewController = NoUserTypeViewController()
-        navigationController.pushViewController(noUserTypeViewController, animated: true)
-    }
 }
 
 extension StartCooordinator: StartViewModelCoordinatorDelegate {
@@ -48,8 +34,22 @@ extension StartCooordinator: StartViewModelCoordinatorDelegate {
     }
 }
 
-extension StartCooordinator: SignUpViewModelCoordinatorDelegate {
+extension StartCooordinator: SignUpViewModelCoordinatorDelegate,
+                             RecoverPasswordViewModelCoordinatorDelegate {
 
+    func didFinish() {
+        switch navigationController.visibleViewController {
+        case is RecoverPasswordViewController:
+            navigationController.popViewController(animated: true)
+        default:
+            navigationController.popToRootViewController(animated: true)
+        }
+    }
+
+    func pushNoUserTypeViewController() {
+        let noUserTypeViewController = NoUserTypeViewController()
+        navigationController.pushViewController(noUserTypeViewController, animated: true)
+    }
 }
 
 extension StartCooordinator: LoginViewModelCoordinatorDelegate {
@@ -60,8 +60,4 @@ extension StartCooordinator: LoginViewModelCoordinatorDelegate {
         recoverPassword.setup(with: recoverPasswordViewModel)
         navigationController.pushViewController(recoverPassword, animated: true)
     }
-}
-
-extension StartCooordinator: RecoverPasswordViewModelCoordinatorDelegate {
-
 }

@@ -1,26 +1,11 @@
-//
-//  AppDelegate.swift
-//  Insiders
-//
-//  Created by Guilherme de Sousa Peixoto on 05/07/21.
-//
-
 import UIKit
 import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-//    var window: UIWindow?
-//    private var applicationCoordinator: ApplicationCoordinator?
-
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        let window = UIWindow(frame: UIScreen.main.bounds)
-//        applicationCoordinator =  ApplicationCoordinator(window: window)
-//        self.window = window
-//        applicationCoordinator?.start()
         FirebaseApp.configure()
         return true
     }
