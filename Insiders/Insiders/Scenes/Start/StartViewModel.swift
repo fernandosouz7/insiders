@@ -1,16 +1,20 @@
 protocol StartViewModelCoordinatorDelegate: AnyObject {
-    func pushSignUpViewController()
-    func pushLoginViewController()
+    func pushToSignUpViewController()
+    func pushToLoginViewController()
 }
 
 final class StartViewModel {
-    weak var coordinatorDelegate: StartViewModelCoordinatorDelegate?
+    private weak var coordinatorDelegate: StartViewModelCoordinatorDelegate?
+
+    init(coordinator: StartViewModelCoordinatorDelegate) {
+        self.coordinatorDelegate = coordinator
+    }
 
     func showSignUpViewController() {
-        coordinatorDelegate?.pushSignUpViewController()
+        coordinatorDelegate?.pushToSignUpViewController()
     }
 
     func showLoginViewController() {
-        coordinatorDelegate?.pushLoginViewController()
+        coordinatorDelegate?.pushToLoginViewController()
     }
 }

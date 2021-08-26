@@ -1,6 +1,6 @@
 import UIKit
 
-class NoUserTypeViewController: UIViewController {
+final class NoUserTypeViewController: UIViewController {
 
     private let customView: NoUserTypeView
 

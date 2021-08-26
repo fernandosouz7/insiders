@@ -3,11 +3,7 @@ import UIKit
 final class LoginViewController: BaseViewController, Storyboardable {
 
     // MARK: - Private Properties
-    private var viewModel: LoginViewModel? {
-        didSet {
-            viewModel?.viewDelegate = self
-        }
-    }
+    private var viewModel: LoginViewModel? 
 
     // MARK: - IBOutlets
     @IBOutlet private weak var emailField: UITextField!
@@ -55,7 +51,7 @@ final class LoginViewController: BaseViewController, Storyboardable {
     }
 }
 
-extension LoginViewController: LoginViewModelViewDelegate {
+extension LoginViewController: LoginViewModelDelegate {
 
     func showErrorMessage(with message: String) {
         activityIndicator.stopAnimating()

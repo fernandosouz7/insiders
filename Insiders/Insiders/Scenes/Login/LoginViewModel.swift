@@ -1,23 +1,28 @@
 import UIKit
 import Firebase
 
-protocol LoginViewModelViewDelegate: AnyObject {
+protocol LoginViewModelDelegate: AnyObject {
 
     func showErrorMessage(with message: String)
     func didFinishLoginWithSuccess()
 }
 
 protocol LoginViewModelCoordinatorDelegate: AnyObject {
-    func pushRecoverPasswordViewController()
-    func pushSignUpViewController()
+    func pushToRecoverPasswordViewController()
+    func pushToSignUpViewController()
     func didFinish()
-    func pushNoUserTypeViewController()
+    func pushToNoUserTypeViewController()
 }
 
 final class LoginViewModel {
 
-    weak var viewDelegate: LoginViewModelViewDelegate?
-    weak var coordinatorDelegate: LoginViewModelCoordinatorDelegate?
+    private weak var viewDelegate: LoginViewModelDelegate?
+    private weak var coordinatorDelegate: LoginViewModelCoordinatorDelegate?
+
+    init(viewDelegate: LoginViewModelDelegate, coordinator: LoginViewModelCoordinatorDelegate) {
+        self.viewDelegate = viewDelegate
+        self.coordinatorDelegate = coordinator
+    }
 
     func makeLogin(with email: String, and password: String) {
         switch getLoginCredentials(with: email, and: password) {
@@ -25,7 +30,7 @@ final class LoginViewModel {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {
                     self?.viewDelegate?.didFinishLoginWithSuccess()
-                    self?.coordinatorDelegate?.pushNoUserTypeViewController()
+                    self?.coordinatorDelegate?.pushToNoUserTypeViewController()
                     return
                 }
                 self?.setupErrorMessage(with: error.localizedDescription)
@@ -36,11 +41,11 @@ final class LoginViewModel {
     }
 
     func showRecoverPasswordViewController() {
-        coordinatorDelegate?.pushRecoverPasswordViewController()
+        coordinatorDelegate?.pushToRecoverPasswordViewController()
     }
 
     func showSignUpViewController() {
-        coordinatorDelegate?.pushSignUpViewController()
+        coordinatorDelegate?.pushToSignUpViewController()
     }
 
     func didFinish() {

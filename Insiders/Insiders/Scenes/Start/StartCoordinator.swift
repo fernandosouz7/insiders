@@ -1,6 +1,6 @@
 import UIKit
 
-class StartCooordinator: Coordinator {
+final class StartCooordinator: Coordinator {
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -9,33 +9,31 @@ class StartCooordinator: Coordinator {
 
     func start() {
         let startViewController = StartViewController.instantiate()
-        let startViewModel = StartViewModel()
-        startViewModel.coordinatorDelegate = self
+        let startViewModel = StartViewModel(coordinator: self)
         startViewController.setup(with: startViewModel)
         navigationController.pushViewController(startViewController, animated: false)
     }
 }
 
 extension StartCooordinator: StartViewModelCoordinatorDelegate {
-    func pushLoginViewController() {
+    func pushToLoginViewController() {
         let loginViewController = LoginViewController.instantiate()
-        let loginViewModel = LoginViewModel()
-        loginViewModel.coordinatorDelegate = self
+        let loginViewModel = LoginViewModel(viewDelegate: loginViewController, coordinator: self)
         loginViewController.setup(with: loginViewModel)
         navigationController.pushViewController(loginViewController, animated: true)
     }
 
-    func pushSignUpViewController() {
+    func pushToSignUpViewController() {
         let signUpViewController = SignUpViewController.instantiate()
-        let signUpViewModel = SignUpViewModel()
-        signUpViewModel.coordinator = self
+        let signUpViewModel = SignUpViewModel(viewDelegate: signUpViewController, coordinator: self)
         signUpViewController.setup(with: signUpViewModel)
         navigationController.pushViewController(signUpViewController, animated: true)
     }
 }
 
 extension StartCooordinator: SignUpViewModelCoordinatorDelegate,
-                             RecoverPasswordViewModelCoordinatorDelegate {
+                             RecoverPasswordViewModelCoordinatorDelegate,
+                             LoginViewModelCoordinatorDelegate {
 
     func didFinish() {
         switch navigationController.visibleViewController {
@@ -46,17 +44,14 @@ extension StartCooordinator: SignUpViewModelCoordinatorDelegate,
         }
     }
 
-    func pushNoUserTypeViewController() {
+    func pushToNoUserTypeViewController() {
         let noUserTypeViewController = NoUserTypeViewController()
         navigationController.pushViewController(noUserTypeViewController, animated: true)
     }
-}
 
-extension StartCooordinator: LoginViewModelCoordinatorDelegate {
-    func pushRecoverPasswordViewController() {
+    func pushToRecoverPasswordViewController() {
         let recoverPassword = RecoverPasswordViewController.instantiate()
-        let recoverPasswordViewModel = RecoverPasswordViewModel()
-        recoverPasswordViewModel.coordinatorDelegate = self
+        let recoverPasswordViewModel = RecoverPasswordViewModel(viewDelegate: recoverPassword, coordinator: self)
         recoverPassword.setup(with: recoverPasswordViewModel)
         navigationController.pushViewController(recoverPassword, animated: true)
     }

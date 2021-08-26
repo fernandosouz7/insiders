@@ -1,6 +1,6 @@
 import Firebase
 
-protocol SignUpViewModelViewDelegate: AnyObject {
+protocol SignUpViewModelDelegate: AnyObject {
 
     func showErrorMessage(with message: String)
     func showFullNameErrorMessage(with message: String)
@@ -10,22 +10,27 @@ protocol SignUpViewModelViewDelegate: AnyObject {
 
 protocol SignUpViewModelCoordinatorDelegate: AnyObject {
     func didFinish()
-    func pushLoginViewController()
-    func pushNoUserTypeViewController()
+    func pushToLoginViewController()
+    func pushToNoUserTypeViewController()
 }
 
 final class SignUpViewModel {
 
-    weak var viewDelegate: SignUpViewModelViewDelegate?
-    weak var coordinator: SignUpViewModelCoordinatorDelegate?
+    private weak var viewDelegate: SignUpViewModelDelegate?
+    private weak var coordinatorDelegate: SignUpViewModelCoordinatorDelegate?
+
+    init(viewDelegate: SignUpViewModelDelegate, coordinator: SignUpViewModelCoordinatorDelegate) {
+        self.viewDelegate = viewDelegate
+        self.coordinatorDelegate = coordinator
+    }
 
     func createUser(with email: String, and password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) {_, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] _, error in
             guard let error = error else {
-                self.didFinishSignUpWithSuccess()
+                self?.didFinishSignUpWithSuccess()
                 return
             }
-            self.viewDelegate?.showErrorMessage(with: error.localizedDescription)
+            self?.viewDelegate?.showErrorMessage(with: error.localizedDescription)
         }
     }
 
@@ -48,14 +53,14 @@ final class SignUpViewModel {
     }
 
     func showLoginViewController() {
-        coordinator?.pushLoginViewController()
+        coordinatorDelegate?.pushToLoginViewController()
     }
 
     func didFinish() {
-        coordinator?.didFinish()
+        coordinatorDelegate?.didFinish()
     }
 
     func didFinishSignUpWithSuccess() {
-        coordinator?.pushNoUserTypeViewController()
+        coordinatorDelegate?.pushToNoUserTypeViewController()
     }
 }

@@ -1,7 +1,7 @@
 import UIKit
 import Cartography
 
-class NoUserTypeView: UIView {
+final class NoUserTypeView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,16 +13,16 @@ class NoUserTypeView: UIView {
         applyViewCode()
     }
 
-    private var textLabel = { return UILabel(frame: .zero) }()
+    private var textLabel = UILabel()
 
-    private func buildHierarchy() {
+    private func addSubviews() {
         addSubview(textLabel)
     }
 
     private func setupConstraints() {
 
-        constrain(textLabel) { textLabel in
-            textLabel.center == textLabel.superview!.center
+        constrain(textLabel, self) { textLabel, superView in
+            textLabel.center == superView.center
         }
     }
 
@@ -33,7 +33,7 @@ class NoUserTypeView: UIView {
     }
 
     private func applyViewCode() {
-        buildHierarchy()
+        addSubviews()
         setupConstraints()
         configureViews()
     }

@@ -3,11 +3,7 @@ import UIKit
 final class SignUpViewController: BaseViewController, Storyboardable {
 
     // MARK: - Private Properties
-    private var viewModel: SignUpViewModel? {
-        didSet {
-            viewModel?.viewDelegate = self
-        }
-    }
+    private var viewModel: SignUpViewModel? 
 
     // MARK: - IBOutlets
     @IBOutlet private weak var fullNameTextField: UITextField! {
@@ -86,7 +82,7 @@ final class SignUpViewController: BaseViewController, Storyboardable {
     }
 }
 
-extension SignUpViewController: SignUpViewModelViewDelegate {
+extension SignUpViewController: SignUpViewModelDelegate {
 
     func showEmailErrorMessage(with message: String) {
         emailErrorLabel.isHidden = false

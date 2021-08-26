@@ -2,11 +2,8 @@ import UIKit
 
 final class RecoverPasswordViewController: BaseViewController, Storyboardable {
     // MARK: - Private Properties
-    private var viewModel: RecoverPasswordViewModel? {
-        didSet {
-            viewModel?.viewDelegate = self
-        }
-    }
+    private var viewModel: RecoverPasswordViewModel?
+
     // MARK: - IBOutlets
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -41,7 +38,7 @@ final class RecoverPasswordViewController: BaseViewController, Storyboardable {
 }
 
 // MARK: - Recover Password View Model Delegate
-extension RecoverPasswordViewController: RecoverPasswordViewModelViewDelegate {
+extension RecoverPasswordViewController: RecoverPasswordViewModelDelegate {
     func showSuccessMessage(with message: String, and handler: @escaping ((UIAlertAction) -> Void)) {
         presentAlert(with: message, and: handler)
     }

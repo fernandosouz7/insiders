@@ -22,6 +22,7 @@ final class StartViewController: BaseViewController, Storyboardable {
     @IBAction func didTapSignUpButton(_ sender: Any) {
         viewModel?.showSignUpViewController()
     }
+
     @IBAction func didTapLoginButton(_ sender: Any) {
         viewModel?.showLoginViewController()
     }
