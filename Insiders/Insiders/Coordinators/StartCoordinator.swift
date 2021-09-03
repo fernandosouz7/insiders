@@ -1,5 +1,27 @@
 import UIKit
 
+protocol StartViewModelCoordinatorDelegate: AnyObject {
+    func pushToSignUpViewController()
+    func pushToLoginViewController()
+}
+
+protocol RecoverPasswordViewModelCoordinatorDelegate: AnyObject {
+    func didFinish()
+}
+
+protocol SignUpViewModelCoordinatorDelegate: AnyObject {
+    func didFinish()
+    func pushToLoginViewController()
+    func pushToNoUserTypeViewController()
+}
+
+protocol LoginViewModelCoordinatorDelegate: AnyObject {
+    func pushToRecoverPasswordViewController()
+    func pushToSignUpViewController()
+    func didFinish()
+    func pushToNoUserTypeViewController()
+}
+
 final class StartCooordinator: Coordinator {
     var navigationController: UINavigationController
 

@@ -7,13 +7,6 @@ protocol LoginViewModelDelegate: AnyObject {
     func didFinishLoginWithSuccess()
 }
 
-protocol LoginViewModelCoordinatorDelegate: AnyObject {
-    func pushToRecoverPasswordViewController()
-    func pushToSignUpViewController()
-    func didFinish()
-    func pushToNoUserTypeViewController()
-}
-
 final class LoginViewModel {
 
     private weak var viewDelegate: LoginViewModelDelegate?

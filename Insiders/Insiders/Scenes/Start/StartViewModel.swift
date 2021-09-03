@@ -1,8 +1,3 @@
-protocol StartViewModelCoordinatorDelegate: AnyObject {
-    func pushToSignUpViewController()
-    func pushToLoginViewController()
-}
-
 final class StartViewModel {
     private weak var coordinatorDelegate: StartViewModelCoordinatorDelegate?
 

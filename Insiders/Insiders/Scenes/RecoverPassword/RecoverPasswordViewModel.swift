@@ -6,10 +6,6 @@ protocol RecoverPasswordViewModelDelegate: AnyObject {
     func showSuccessMessage(with message: String, and handler: @escaping ((UIAlertAction) -> Void))
 }
 
-protocol RecoverPasswordViewModelCoordinatorDelegate: AnyObject {
-    func didFinish()
-}
-
 final class RecoverPasswordViewModel {
 
     private weak var viewDelegate: RecoverPasswordViewModelDelegate?

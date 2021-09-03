@@ -126,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				DE382ED226B43CFE009FD6C1 /* StartViewController.swift */,
-				DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */,
 				DE866C2526D0049000F453BF /* StartViewModel.swift */,
 			);
 			path = Start;
@@ -153,6 +152,7 @@
 		DE4324F92693AE3300AFE3AD /* Insiders */ = {
 			isa = PBXGroup;
 			children = (
+				DE44BB4926E259F40083B354 /* Coordinators */,
 				DEB0FBB826CEB00600004086 /* Protocols */,
 				DE981D4126BD9F41009B1EFC /* Scenes */,
 				DED09EBE26B819C3006E93E4 /* Extensions */,
@@ -169,6 +169,15 @@
 			path = Insiders;
 			sourceTree = "<group>";
 		};
+		DE44BB4926E259F40083B354 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */,
+				DEC8136226CC2A51002CCC10 /* StartCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		DE917C6826D3E9C300653CA6 /* NoUserType */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +190,6 @@
 		DE981D4126BD9F41009B1EFC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DEC8136026CC2962002CCC10 /* ApplicationCoordinator.swift */,
 				DE917C6826D3E9C300653CA6 /* NoUserType */,
 				DE11C90D26C165B80009D733 /* Start */,
 				DE11C90C26C165A40009D733 /* RecoverPassword */,

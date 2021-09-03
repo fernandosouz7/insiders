@@ -8,12 +8,6 @@ protocol SignUpViewModelDelegate: AnyObject {
     func showPasswordErrorMessage(with message: String)
 }
 
-protocol SignUpViewModelCoordinatorDelegate: AnyObject {
-    func didFinish()
-    func pushToLoginViewController()
-    func pushToNoUserTypeViewController()
-}
-
 final class SignUpViewModel {
 
     private weak var viewDelegate: SignUpViewModelDelegate?
