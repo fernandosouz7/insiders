@@ -31,6 +31,7 @@
 
 - ``Swift``
 - ``ViewCode - cartography``
-- ``MVVM-c``
+- ``cocoapods``
 - ``Xcode``
+- ``MVVM-c``
 - ``Firebase``
