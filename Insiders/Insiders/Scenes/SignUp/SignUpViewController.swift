@@ -1,9 +1,9 @@
 import UIKit
 
-final class SignUpViewController: UIViewController {
+final class SignUpViewController: BaseViewController, Storyboardable {
 
     // MARK: - Private Properties
-    private var viewModel: SignUpViewModel?
+    private var viewModel: SignUpViewModel? 
 
     // MARK: - IBOutlets
     @IBOutlet private weak var fullNameTextField: UITextField! {
@@ -20,6 +20,7 @@ final class SignUpViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
         setupSignUpButtonAndFullNameTextField()
         setupGestureReconizer()
@@ -32,6 +33,9 @@ final class SignUpViewController: UIViewController {
         viewModel?.createUser(with: email, and: password)
     }
 
+    @IBAction func didTapLoginButton(_ sender: Any) {
+        viewModel?.showLoginViewController()
+    }
     // MARK: - Private func
     private func setupSignUpButtonAndFullNameTextField() {
         signUpButton.layer.cornerRadius = 15
@@ -68,8 +72,12 @@ final class SignUpViewController: UIViewController {
         view.endEditing(true)
     }
 
+    @objc private func didTapBackButton() {
+        viewModel?.didFinish()
+    }
+
     // MARK: - Public functions
-    func setupViewModel(with viewModel: SignUpViewModel) {
+    func setup(with viewModel: SignUpViewModel) {
         self.viewModel = viewModel
     }
 }
@@ -89,10 +97,6 @@ extension SignUpViewController: SignUpViewModelDelegate {
     func showFullNameErrorMessage(with message: String) {
         fullNameErrorLabel.isHidden = false
         fullNameErrorLabel.text = message
-    }
-
-    func didFinishSignUpWithSuccess() {
-        performSegue(withIdentifier: "signUpToHome", sender: self)
     }
 
     func showErrorMessage(with message: String) {

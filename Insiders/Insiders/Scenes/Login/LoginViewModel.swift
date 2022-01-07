@@ -9,10 +9,12 @@ protocol LoginViewModelDelegate: AnyObject {
 
 final class LoginViewModel {
 
-    private weak var delegate: LoginViewModelDelegate?
+    private weak var viewDelegate: LoginViewModelDelegate?
+    private weak var coordinatorDelegate: LoginViewModelCoordinatorDelegate?
 
-    init(delegate: LoginViewModelDelegate) {
-        self.delegate = delegate
+    init(viewDelegate: LoginViewModelDelegate, coordinator: LoginViewModelCoordinatorDelegate) {
+        self.viewDelegate = viewDelegate
+        self.coordinatorDelegate = coordinator
     }
 
     func makeLogin(with email: String, and password: String) {
@@ -20,7 +22,8 @@ final class LoginViewModel {
         case .correct:
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let error = error else {
-                    self?.delegate?.didFinishLoginWithSuccess()
+                    self?.viewDelegate?.didFinishLoginWithSuccess()
+                    self?.coordinatorDelegate?.pushToNoUserTypeViewController()
                     return
                 }
                 self?.setupErrorMessage(with: error.localizedDescription)
@@ -28,6 +31,18 @@ final class LoginViewModel {
         case .incorrect(let message):
             setupErrorMessage(with: message)
         }
+    }
+
+    func showRecoverPasswordViewController() {
+        coordinatorDelegate?.pushToRecoverPasswordViewController()
+    }
+
+    func showSignUpViewController() {
+        coordinatorDelegate?.pushToSignUpViewController()
+    }
+
+    func didFinish() {
+        coordinatorDelegate?.didFinish()
     }
 
     private func getLoginCredentials(with email: String, and password: String) -> LoginCredentialsStatus {
@@ -44,7 +59,7 @@ final class LoginViewModel {
     }
 
     private func setupErrorMessage(with message: String) {
-        delegate?.showErrorMessage(with: message)
+        viewDelegate?.showErrorMessage(with: message)
     }
 }
 

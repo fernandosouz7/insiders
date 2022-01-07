@@ -1,9 +1,9 @@
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController, Storyboardable {
 
     // MARK: - Private Properties
-    private var loginViewModel: LoginViewModel?
+    private var viewModel: LoginViewModel? 
 
     // MARK: - IBOutlets
     @IBOutlet private weak var emailField: UITextField!
@@ -14,6 +14,7 @@ final class LoginViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
         setupLoginButton()
     }
@@ -22,26 +23,31 @@ final class LoginViewController: UIViewController {
     @IBAction private func didTapLoginButton(_ sender: Any) {
         guard let email = emailField.text,
               let password = passwordField.text,
-              let loginViewModel = loginViewModel else { return }
+              let loginViewModel = viewModel else { return }
         activityIndicator.startAnimating()
         loginViewModel.makeLogin(with: email, and: password)
     }
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let recoverPasswordViewController = segue.destination as? RecoverPasswordViewController {
-            recoverPasswordViewController.setupViewModel(
-                with: RecoverPasswordViewModel(
-                    delegate: recoverPasswordViewController as RecoverPasswordViewModelDelegate))
-        }
+
+    @IBAction func didTapForgotPasswordButton(_ sender: Any) {
+        viewModel?.showRecoverPasswordViewController()
     }
+
+    @IBAction func didTapSignUpButton(_ sender: Any) {
+        viewModel?.showSignUpViewController()
+    }
+
     // MARK: - Public functions
-    func setupViewModel(with viewModel: LoginViewModel) {
-        loginViewModel = viewModel
+    func setup(with viewModel: LoginViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: - Private func
     private func setupLoginButton() {
         loginButton.layer.cornerRadius = 15
+    }
+
+    @objc private func didTapBackButton() {
+        viewModel?.didFinish()
     }
 }
 
@@ -54,6 +60,5 @@ extension LoginViewController: LoginViewModelDelegate {
 
     func didFinishLoginWithSuccess() {
         activityIndicator.stopAnimating()
-        performSegue(withIdentifier: "loginToHome", sender: self)
     }
 }

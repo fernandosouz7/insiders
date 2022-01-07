@@ -1,7 +1,8 @@
 import UIKit
 
-final class StartViewController: UIViewController {
+final class StartViewController: BaseViewController, Storyboardable {
 
+    private var viewModel: StartViewModel?
     // MARK: - IBOutlets
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
@@ -18,18 +19,17 @@ final class StartViewController: UIViewController {
         setupNavigation(isHidden: true)
     }
 
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let loginViewController = segue.destination as? LoginViewController {
-            loginViewController.setupViewModel(with: LoginViewModel(delegate: loginViewController as LoginViewModelDelegate))
-        }
-        if let signUpViewController = segue.destination as? SignUpViewController {
-            signUpViewController.setupViewModel(
-                with: SignUpViewModel(
-                    delegate: signUpViewController as SignUpViewModelDelegate))
-        }
+    @IBAction func didTapSignUpButton(_ sender: Any) {
+        viewModel?.showSignUpViewController()
     }
 
+    @IBAction func didTapLoginButton(_ sender: Any) {
+        viewModel?.showLoginViewController()
+    }
+
+    func setup(with viewModel: StartViewModel) {
+        self.viewModel = viewModel
+    }
     // MARK: - Private func
     private func setupButtons() {
         signUpButton.layer.cornerRadius = 15

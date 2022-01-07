@@ -1,9 +1,8 @@
 import UIKit
 
-final class RecoverPasswordViewController: UIViewController {
-
+final class RecoverPasswordViewController: BaseViewController, Storyboardable {
     // MARK: - Private Properties
-    private var recoverPasswordViewModel: RecoverPasswordViewModel?
+    private var viewModel: RecoverPasswordViewModel?
 
     // MARK: - IBOutlets
     @IBOutlet private weak var sendButton: UIButton!
@@ -12,34 +11,36 @@ final class RecoverPasswordViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupSendButton()
     }
 
     // MARK: - IBActions
     @IBAction private func didTapSendButton(_ sender: Any) {
         guard let email = emailTextField.text,
-              let recoverPasswordViewModel = recoverPasswordViewModel else { return }
+              let recoverPasswordViewModel = viewModel else { return }
         recoverPasswordViewModel.sendPasswordReset(with: email)
     }
 
     // MARK: - Public functions
-    func setupViewModel(with viewModel: RecoverPasswordViewModel) {
-        recoverPasswordViewModel = viewModel
+    func setup(with viewModel: RecoverPasswordViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: - Private func
     private func setupSendButton() {
         sendButton.layer.cornerRadius = 15
     }
+
+    @objc private func didTapBackButton() {
+        viewModel?.didFinish()
+    }
 }
 
 // MARK: - Recover Password View Model Delegate
 extension RecoverPasswordViewController: RecoverPasswordViewModelDelegate {
-
-    func showSuccessMessage(with message: String) {
-        presentAlert(with: message) { _ in
-            self.navigationController?.popViewController(animated: true)
-        }
+    func showSuccessMessage(with message: String, and handler: @escaping ((UIAlertAction) -> Void)) {
+        presentAlert(with: message, and: handler)
     }
 
     func showErrorMessage(with message: String) {
