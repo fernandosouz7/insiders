@@ -50,16 +50,14 @@ final class LoginView: UIView {
             signUp.bottom == stack.superview!.safeAreaLayoutGuide.bottom - 16
             image.height == 75
             email.height == 50
-            password.height == 50
-        }
+            password.height == 50        }
     }
 
     private func configureViews() {
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
         stackView.spacing = 30
-        stackView.translatesAutoresizingMaskIntoConstraints = false
 
         imageView.image = UIImage(named: "thumbnail_insiders")
 
@@ -79,25 +77,28 @@ final class LoginView: UIView {
         passwordField.borderStyle = .roundedRect
 
         forgotPasswordButton.setTitle("Esqueceu a senha?", for: .normal)
+        forgotPasswordButton.contentHorizontalAlignment = .trailing
         forgotPasswordButton.titleLabel?.font = .systemFont(ofSize: 12)
         forgotPasswordButton.setTitleColor(UIColor(named: "Shamrock"), for: .normal)
 
         loginButton.setTitle("Entrar", for: .normal)
-        loginButton.setTitleColor(UIColor(named: "Shamrock"), for: .normal)
-        loginButton.backgroundColor = UIColor(named: "Shamrock")
-//        loginButton.configuration?.cornerStyle = .capsule
-//        loginButton.configuration?.buttonSize = .large
-//        loginButton.configuration?.baseBackgroundColor = .init(named: "Shamrock")
+        loginButton.setTitleColor(.black, for: .normal)
+        loginButton.configuration = .filled()
+        loginButton.configuration?.cornerStyle = .capsule
+        loginButton.configuration?.buttonSize = .large
+        loginButton.configuration?.baseBackgroundColor = .init(named: "Shamrock")
 
         signUpStack.axis = .horizontal
         signUpStack.alignment = .fill
         signUpStack.distribution = .fillEqually
+        signUpStack.spacing = 4
 
         signUpLabel.text = "Não tem conta?"
         signUpLabel.textAlignment = .right
         signUpLabel.font = .systemFont(ofSize: 12)
 
         signUpButton.titleLabel?.font = .systemFont(ofSize: 12)
+        signUpButton.contentHorizontalAlignment = .leading
         signUpButton.setTitle("Inscrever-se", for: .normal)
         signUpButton.setTitleColor(UIColor(named: "Shamrock"), for: .normal)
 

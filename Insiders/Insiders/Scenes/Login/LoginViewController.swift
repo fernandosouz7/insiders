@@ -2,14 +2,7 @@ import UIKit
 
 final class LoginViewController: BaseViewController {
 
-    // MARK: - Private Properties
-    private var viewModel: LoginViewModel? 
-
-//    // MARK: - IBOutlets
-//    @IBOutlet private weak var emailField: UITextField!
-//    @IBOutlet private weak var passwordField: UITextField!
-//    @IBOutlet private weak var loginButton: UIButton!
-//    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    private var viewModel: LoginViewModel?
 
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -26,10 +19,8 @@ final class LoginViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        super.setupLeftBarButton(selector: #selector(didTapBackButton))
+        super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
-//        setupLoginButton()
-        title = "Entrar"
     }
 
     // MARK: - IBActions
@@ -49,19 +40,9 @@ final class LoginViewController: BaseViewController {
 //        viewModel?.showSignUpViewController()
 //    }
 
-    // MARK: - Public functions
-    func setup(with viewModel: LoginViewModel) {
-        self.viewModel = viewModel
+    @objc private func didTapBackButton() {
+        viewModel?.didFinish()
     }
-
-    // MARK: - Private func
-//    private func setupLoginButton() {
-//        loginButton.layer.cornerRadius = 15
-//    }
-
-//    @objc private func didTapBackButton() {
-//        viewModel?.didFinish()
-//    }
 }
 
 //extension LoginViewController: LoginViewModelDelegate {
