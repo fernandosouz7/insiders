@@ -12,8 +12,7 @@ final class LoginViewModel {
     private weak var viewDelegate: LoginViewModelDelegate?
     private weak var coordinatorDelegate: LoginViewModelCoordinatorDelegate?
 
-    init(viewDelegate: LoginViewModelDelegate, coordinator: LoginViewModelCoordinatorDelegate) {
-        self.viewDelegate = viewDelegate
+    init(coordinator: LoginViewModelCoordinatorDelegate) {
         self.coordinatorDelegate = coordinator
     }
 

@@ -39,9 +39,8 @@ final class StartCooordinator: Coordinator {
 
 extension StartCooordinator: StartViewModelCoordinatorDelegate {
     func pushToLoginViewController() {
-        let loginViewController = LoginViewController.instantiate()
-        let loginViewModel = LoginViewModel(viewDelegate: loginViewController, coordinator: self)
-        loginViewController.setup(with: loginViewModel)
+        let loginViewModel = LoginViewModel(coordinator: self)
+        let loginViewController = LoginViewController(viewModel: loginViewModel)
         navigationController.pushViewController(loginViewController, animated: true)
     }
 
