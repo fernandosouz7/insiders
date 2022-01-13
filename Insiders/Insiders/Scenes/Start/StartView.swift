@@ -1,6 +1,12 @@
 import UIKit
 import Cartography
 
+protocol StartViewDelegate: AnyObject {
+    func configureActions(signUpSelector: Selector,
+                          loginSelector: Selector,
+                          viewController: UIViewController)
+}
+
 final class StartView: UIView {
 
     private var stackView: UIStackView = UIStackView(frame: .zero)
@@ -36,9 +42,7 @@ final class StartView: UIView {
         constrain(stackView,
                   imageStack,
                   logoImage,
-                  thumbnailImage,
-                  signUpButton,
-                  loginButton ) { stack, image, logo, thumbnail, signUpButton, loginButton  in
+                  thumbnailImage) { stack, image, logo, thumbnail  in
             stack.bottom == stack.superview!.safeAreaLayoutGuide.bottom - 45
             stack.leading == stack.superview!.leading + 32
             stack.trailing == stack.superview!.trailing - 32
@@ -47,8 +51,6 @@ final class StartView: UIView {
             image.trailing == image.superview!.trailing - 32
             logo.height == 190
             thumbnail.height == 75
-            loginButton.height == 45
-            signUpButton.height == 45
         }
     }
 
@@ -89,7 +91,11 @@ final class StartView: UIView {
         loginButton.setTitleColor(UIColor(named: "Shamrock"), for: .normal)
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(named: "Shamrock")?.cgColor
-        loginButton.layer.cornerRadius = 20
+        loginButton.layer.cornerRadius = 25
+        loginButton.configuration = .filled()
+        loginButton.configuration?.buttonSize = .large
+        loginButton.configuration?.cornerStyle = .capsule
+        loginButton.configuration?.baseBackgroundColor = .systemBackground
 
         backgroundColor = .systemBackground
     }
@@ -98,5 +104,13 @@ final class StartView: UIView {
         buildHierarchy()
         setupConstraints()
         configureViews()
+    }
+}
+extension StartView: StartViewDelegate {
+    func configureActions(signUpSelector: Selector,
+                          loginSelector: Selector,
+                          viewController: UIViewController) {
+        signUpButton.addTarget(viewController, action: signUpSelector, for: .touchUpInside)
+        loginButton.addTarget(viewController, action: loginSelector, for: .touchUpInside)
     }
 }
