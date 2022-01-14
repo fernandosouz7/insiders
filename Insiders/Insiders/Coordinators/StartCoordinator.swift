@@ -30,9 +30,8 @@ final class StartCooordinator: Coordinator {
     }
 
     func start() {
-        let startViewController = StartViewController.instantiate()
         let startViewModel = StartViewModel(coordinator: self)
-        startViewController.setup(with: startViewModel)
+        let startViewController = StartViewController(with: startViewModel)
         navigationController.pushViewController(startViewController, animated: false)
     }
 }
