@@ -45,9 +45,8 @@ extension StartCooordinator: StartViewModelCoordinatorDelegate {
     }
 
     func pushToSignUpViewController() {
-        let signUpViewController = SignUpViewController.instantiate()
-        let signUpViewModel = SignUpViewModel(viewDelegate: signUpViewController, coordinator: self)
-        signUpViewController.setup(with: signUpViewModel)
+        let signUpViewModel = SignUpViewModel(coordinator: self)
+        let signUpViewController = SignUpViewController(viewModel: signUpViewModel)
         navigationController.pushViewController(signUpViewController, animated: true)
     }
 }

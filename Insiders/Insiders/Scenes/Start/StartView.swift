@@ -21,6 +21,7 @@ final class StartView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         applyViewCode()
+        backgroundColor = .systemBackground
     }
 
     required init?(coder: NSCoder) {
