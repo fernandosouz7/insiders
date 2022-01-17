@@ -106,6 +106,7 @@ final class StartView: UIView {
         configureViews()
     }
 }
+
 extension StartView: StartViewDelegate {
     func configureActions(signUpSelector: Selector,
                           loginSelector: Selector,
