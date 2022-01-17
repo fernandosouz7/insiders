@@ -13,8 +13,7 @@ final class SignUpViewModel {
     private weak var viewDelegate: SignUpViewModelDelegate?
     private weak var coordinatorDelegate: SignUpViewModelCoordinatorDelegate?
 
-    init(viewDelegate: SignUpViewModelDelegate, coordinator: SignUpViewModelCoordinatorDelegate) {
-        self.viewDelegate = viewDelegate
+    init(coordinator: SignUpViewModelCoordinatorDelegate) {
         self.coordinatorDelegate = coordinator
     }
 

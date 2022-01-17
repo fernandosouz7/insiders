@@ -3,7 +3,7 @@ import UIKit
 final class StartViewController: BaseViewController {
 
     private var viewModel: StartViewModel?
-    
+
     private var customView: StartViewDelegate {
         return (view as? StartViewDelegate)!
     }
