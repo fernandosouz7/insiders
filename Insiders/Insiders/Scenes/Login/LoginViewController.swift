@@ -1,8 +1,16 @@
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func setupActivityIndicator()
+}
+
 final class LoginViewController: BaseViewController {
 
     private var viewModel: LoginViewModel?
+    private var customView: LoginViewDelegate? {
+        return (view as? LoginViewDelegate)
+    }
+    private var passwordVisible: Bool = true
 
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -21,38 +29,53 @@ final class LoginViewController: BaseViewController {
         super.viewDidLoad()
         super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
+        setupActions()
     }
 
-    // MARK: - IBActions
-//    @IBAction private func didTapLoginButton(_ sender: Any) {
-//        guard let email = emailField.text,
-//              let password = passwordField.text,
-//              let loginViewModel = viewModel else { return }
-//        activityIndicator.startAnimating()
-//        loginViewModel.makeLogin(with: email, and: password)
-//    }
-//
-//    @IBAction func didTapForgotPasswordButton(_ sender: Any) {
-//        viewModel?.showRecoverPasswordViewController()
-//    }
-//
-//    @IBAction func didTapSignUpButton(_ sender: Any) {
-//        viewModel?.showSignUpViewController()
-//    }
+    private func setupActions() {
+        customView?.configureActions(forgotPasswordSelector: #selector(didTapForgotPasswordButton(sender:)),
+                                     loginSelector: #selector(didTapLoginButton(sender:)),
+                                     signUpSelector: #selector(didTapSignUpButton(sender:)),
+                                     showHideSelector: #selector(didTapShowHideButton(sender:)),
+                                     viewController: self)
+    }
+
+    @objc func didTapLoginButton(sender: UIButton) {
+        guard let loginViewModel = viewModel,
+              let view = customView else {return}
+        view.getEmailAndPassword {email, password in
+            view.showActivityIndicator()
+            loginViewModel.makeLogin(with: email, and: password) {[weak self] _ in
+                self?.customView?.stopActivityIndicator()
+            }
+        }
+    }
+
+    @objc func didTapForgotPasswordButton(sender: UIButton) {
+        viewModel?.showRecoverPasswordViewController()
+    }
+
+    @objc func didTapSignUpButton(sender: UIButton) {
+        viewModel?.showSignUpViewController()
+    }
 
     @objc private func didTapBackButton() {
         viewModel?.didFinish()
     }
+
+    @objc private func didTapShowHideButton(sender: UIButton) {
+        if passwordVisible {
+            customView?.hideButton()
+            passwordVisible = false
+        } else {
+            customView?.showButton()
+            passwordVisible = true
+        }
+    }
 }
 
-//extension LoginViewController: LoginViewModelDelegate {
-//
-//    func showErrorMessage(with message: String) {
-//        activityIndicator.stopAnimating()
-//        presentAlert(with: message)
-//    }
-//
-//    func didFinishLoginWithSuccess() {
-//        activityIndicator.stopAnimating()
-//    }
-//}
+extension LoginViewController: LoginViewControllerDelegate {
+    func setupActivityIndicator() {
+        customView?.stopActivityIndicator()
+    }
+}

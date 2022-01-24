@@ -1,7 +1,6 @@
 import Firebase
 
 protocol SignUpViewModelDelegate: AnyObject {
-
     func showErrorMessage(with message: String)
     func showFullNameErrorMessage(with message: String)
     func showEmailErrorMessage(with message: String)

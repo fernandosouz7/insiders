@@ -1,6 +1,19 @@
 import UIKit
 import Cartography
 
+protocol LoginViewDelegate: AnyObject {
+    func configureActions(forgotPasswordSelector: Selector,
+                          loginSelector: Selector,
+                          signUpSelector: Selector,
+                          showHideSelector: Selector,
+                          viewController: UIViewController)
+    func getEmailAndPassword(completion: @escaping (String, String) -> Void)
+    func showActivityIndicator()
+    func stopActivityIndicator()
+    func showButton()
+    func hideButton()
+}
+
 final class LoginView: UIView {
 
     private var stackView: UIStackView = UIStackView(frame: .zero)
@@ -13,6 +26,7 @@ final class LoginView: UIView {
     private var signUpButton: UIButton = UIButton(frame: .zero)
     private var loginButton: UIButton = UIButton(frame: .zero)
     private var forgotPasswordButton: UIButton = UIButton(frame: .zero)
+    private var showHideButton: UIButton = UIButton(frame: .zero)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +38,6 @@ final class LoginView: UIView {
     }
 
     private func buildHierarchy() {
-        stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(emailField)
         stackView.addArrangedSubview(passwordStack)
         passwordStack.addArrangedSubview(passwordField)
@@ -32,8 +45,10 @@ final class LoginView: UIView {
         stackView.addArrangedSubview(loginButton)
         signUpStack.addArrangedSubview(signUpLabel)
         signUpStack.addArrangedSubview(signUpButton)
+        addSubview(imageView)
         addSubview(stackView)
         addSubview(signUpStack)
+        addSubview(showHideButton)
     }
 
     private func setupConstraints() {
@@ -41,16 +56,27 @@ final class LoginView: UIView {
                   imageView,
                   signUpStack,
                   emailField,
-                  passwordField) { stack, image, signUp, email, password in
-            stack.top == stack.superview!.safeAreaLayoutGuide.top + 16
+                  passwordField,
+                  forgotPasswordButton,
+                  showHideButton) { stack, image, signUp, email, password, forgot, show in
+            image.top == image.superview!.safeAreaLayoutGuide.top + 30
+            image.leading == image.superview!.leading + 32
+            image.trailing == image.superview!.trailing - 32
+            stack.centerY == stack.superview!.centerY
             stack.leading == stack.superview!.leading + 32
             stack.trailing == stack.superview!.trailing - 32
-            signUp.leading == stack.leading
-            signUp.trailing == stack.trailing
-            signUp.bottom == stack.superview!.safeAreaLayoutGuide.bottom - 16
+            forgot.left == stack.left + 255
+            signUp.top == stack.bottom + 16
+            signUp.centerX == signUp.superview!.centerX
+            show.centerY == password.centerY
+            show.right == password.rightMargin
+            show.height == 24
+            show.width == 24
             image.height == 75
             email.height == 50
-            password.height == 50        }
+            password.height == 50
+            password.width == stack.width
+        }
     }
 
     private func configureViews() {
@@ -69,12 +95,14 @@ final class LoginView: UIView {
         passwordStack.axis = .vertical
         passwordStack.alignment = .fill
         passwordStack.distribution = .fill
-        passwordStack.spacing = 16
+        passwordStack.spacing = 10
 
         passwordField.placeholder = "Senha"
         passwordField.textContentType = .password
         passwordField.isSecureTextEntry = true
         passwordField.borderStyle = .roundedRect
+
+        showHideButton.setImage(UIImage(named: "open-eye"), for: .normal)
 
         forgotPasswordButton.setTitle("Esqueceu a senha?", for: .normal)
         forgotPasswordButton.contentHorizontalAlignment = .trailing
@@ -90,7 +118,7 @@ final class LoginView: UIView {
 
         signUpStack.axis = .horizontal
         signUpStack.alignment = .fill
-        signUpStack.distribution = .fillEqually
+        signUpStack.distribution = .fillProportionally
         signUpStack.spacing = 4
 
         signUpLabel.text = "Não tem conta?"
@@ -109,5 +137,44 @@ final class LoginView: UIView {
         buildHierarchy()
         setupConstraints()
         configureViews()
+    }
+}
+
+extension LoginView: LoginViewDelegate {
+    func configureActions(forgotPasswordSelector: Selector,
+                          loginSelector: Selector,
+                          signUpSelector: Selector,
+                          showHideSelector: Selector,
+                          viewController: UIViewController) {
+        forgotPasswordButton.addTarget(viewController, action: forgotPasswordSelector, for: .touchUpInside)
+        loginButton.addTarget(viewController, action: loginSelector, for: .touchUpInside)
+        signUpButton.addTarget(viewController, action: signUpSelector, for: .touchUpInside)
+        showHideButton.addTarget(viewController, action: showHideSelector, for: .touchUpInside)
+    }
+
+    func getEmailAndPassword(completion: @escaping (String, String) -> Void) {
+        guard let email = emailField.text,
+              let password = passwordField.text else { return }
+        completion(email, password)
+    }
+
+    func showActivityIndicator() {
+        loginButton.configuration?.showsActivityIndicator = true
+        loginButton.setTitle("", for: .normal)
+    }
+
+    func stopActivityIndicator() {
+        loginButton.configuration?.showsActivityIndicator = false
+        loginButton.setTitle("Entrar", for: .normal)
+    }
+
+    func showButton() {
+        passwordField.isSecureTextEntry = true
+        showHideButton.setImage(UIImage(named: "open-eye"), for: .normal)
+    }
+
+    func hideButton() {
+        passwordField.isSecureTextEntry = false
+        showHideButton.setImage(UIImage(named: "closed-eye"), for: .normal)
     }
 }

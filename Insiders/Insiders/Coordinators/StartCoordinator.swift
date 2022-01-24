@@ -20,13 +20,16 @@ protocol LoginViewModelCoordinatorDelegate: AnyObject {
     func pushToSignUpViewController()
     func didFinish()
     func pushToNoUserTypeViewController()
+    func showErrorMessage(with message: String)
 }
 
 final class StartCooordinator: Coordinator {
+
     var navigationController: UINavigationController
+    private var loginViewController: LoginViewControllerDelegate?
 
     init(navigationController: UINavigationController) {
-        self.navigationController  = navigationController
+        self.navigationController = navigationController
     }
 
     func start() {
@@ -53,7 +56,6 @@ extension StartCooordinator: StartViewModelCoordinatorDelegate {
 extension StartCooordinator: SignUpViewModelCoordinatorDelegate,
                              RecoverPasswordViewModelCoordinatorDelegate,
                              LoginViewModelCoordinatorDelegate {
-
     func didFinish() {
         switch navigationController.visibleViewController {
         case is RecoverPasswordViewController:
@@ -73,5 +75,9 @@ extension StartCooordinator: SignUpViewModelCoordinatorDelegate,
         let recoverPasswordViewModel = RecoverPasswordViewModel(viewDelegate: recoverPassword, coordinator: self)
         recoverPassword.setup(with: recoverPasswordViewModel)
         navigationController.pushViewController(recoverPassword, animated: true)
+    }
+
+    func showErrorMessage(with message: String) {
+        navigationController.presentAlert(with: message)
     }
 }
