@@ -1,9 +1,5 @@
 import UIKit
 
-protocol LoginViewControllerDelegate: AnyObject {
-    func setupActivityIndicator()
-}
-
 final class LoginViewController: BaseViewController {
 
     private var viewModel: LoginViewModel?
@@ -71,11 +67,5 @@ final class LoginViewController: BaseViewController {
             customView?.showButton()
             passwordVisible = true
         }
-    }
-}
-
-extension LoginViewController: LoginViewControllerDelegate {
-    func setupActivityIndicator() {
-        customView?.stopActivityIndicator()
     }
 }

@@ -26,7 +26,6 @@ protocol LoginViewModelCoordinatorDelegate: AnyObject {
 final class StartCooordinator: Coordinator {
 
     var navigationController: UINavigationController
-    private var loginViewController: LoginViewControllerDelegate?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
