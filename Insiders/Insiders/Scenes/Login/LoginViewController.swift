@@ -6,7 +6,6 @@ final class LoginViewController: BaseViewController {
     private var customView: LoginViewDelegate? {
         return (view as? LoginViewDelegate)
     }
-    private var passwordVisible: Bool = true
 
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -29,30 +28,33 @@ final class LoginViewController: BaseViewController {
     }
 
     private func setupActions() {
-        customView?.configureActions(forgotPasswordSelector: #selector(didTapForgotPasswordButton(sender:)),
-                                     loginSelector: #selector(didTapLoginButton(sender:)),
-                                     signUpSelector: #selector(didTapSignUpButton(sender:)),
+        customView?.configureActions(forgotPasswordSelector: #selector(didTapButton(sender:)),
+                                     loginSelector: #selector(didTapButton(sender:)),
+                                     signUpSelector: #selector(didTapButton(sender:)),
                                      showHideSelector: #selector(didTapShowHideButton(sender:)),
                                      viewController: self)
     }
 
-    @objc func didTapLoginButton(sender: UIButton) {
+    private func setupLogin() {
         guard let loginViewModel = viewModel,
               let view = customView else {return}
         view.getEmailAndPassword {email, password in
-            view.showActivityIndicator()
+            view.setupActivityIndicator()
             loginViewModel.makeLogin(with: email, and: password) {[weak self] _ in
-                self?.customView?.stopActivityIndicator()
+                self?.customView?.setupActivityIndicator()
             }
         }
     }
 
-    @objc func didTapForgotPasswordButton(sender: UIButton) {
-        viewModel?.showRecoverPasswordViewController()
-    }
-
-    @objc func didTapSignUpButton(sender: UIButton) {
-        viewModel?.showSignUpViewController()
+    @objc private func didTapButton(sender: UIButton) {
+        guard let placeholder = sender.titleLabel?.text else {return}
+        switch placeholder {
+        case "Esqueceu a senha?": viewModel?.showRecoverPasswordViewController()
+        case "Entrar": self.setupLogin()
+        case "Inscrever-se": viewModel?.showSignUpViewController()
+        default:
+            break
+        }
     }
 
     @objc private func didTapBackButton() {
@@ -60,12 +62,6 @@ final class LoginViewController: BaseViewController {
     }
 
     @objc private func didTapShowHideButton(sender: UIButton) {
-        if passwordVisible {
-            customView?.hideButton()
-            passwordVisible = false
-        } else {
-            customView?.showButton()
-            passwordVisible = true
-        }
+        customView?.setupShowHideButton()
     }
 }

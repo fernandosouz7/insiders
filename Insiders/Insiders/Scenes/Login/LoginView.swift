@@ -8,10 +8,8 @@ protocol LoginViewDelegate: AnyObject {
                           showHideSelector: Selector,
                           viewController: UIViewController)
     func getEmailAndPassword(completion: @escaping (String, String) -> Void)
-    func showActivityIndicator()
-    func stopActivityIndicator()
-    func showButton()
-    func hideButton()
+    func setupActivityIndicator()
+    func setupShowHideButton()
 }
 
 final class LoginView: UIView {
@@ -40,14 +38,14 @@ final class LoginView: UIView {
     private func buildHierarchy() {
         stackView.addArrangedSubview(emailField)
         stackView.addArrangedSubview(passwordStack)
+        stackView.addArrangedSubview(loginButton)
+        stackView.addArrangedSubview(signUpStack)
         passwordStack.addArrangedSubview(passwordField)
         passwordStack.addArrangedSubview(forgotPasswordButton)
-        stackView.addArrangedSubview(loginButton)
         signUpStack.addArrangedSubview(signUpLabel)
         signUpStack.addArrangedSubview(signUpButton)
         addSubview(imageView)
         addSubview(stackView)
-        addSubview(signUpStack)
         addSubview(showHideButton)
     }
 
@@ -57,25 +55,21 @@ final class LoginView: UIView {
                   signUpStack,
                   emailField,
                   passwordField,
-                  forgotPasswordButton,
-                  showHideButton) { stack, image, signUp, email, password, forgot, show in
-            image.top == image.superview!.safeAreaLayoutGuide.top + 30
+                  showHideButton) { stack, image, signUp, email, password, showButton  in
+            image.top == image.superview!.safeAreaLayoutGuide.top
             image.leading == image.superview!.leading + 32
             image.trailing == image.superview!.trailing - 32
             stack.centerY == stack.superview!.centerY
             stack.leading == stack.superview!.leading + 32
             stack.trailing == stack.superview!.trailing - 32
-            forgot.left == stack.left + 255
-            signUp.top == stack.bottom + 16
             signUp.centerX == signUp.superview!.centerX
-            show.centerY == password.centerY
-            show.right == password.rightMargin
-            show.height == 24
-            show.width == 24
+            showButton.centerY == password.centerY
+            showButton.right == password.rightMargin
+            showButton.height == 24
+            showButton.width == 24
             image.height == 75
             email.height == 50
             password.height == 50
-            password.width == stack.width
         }
     }
 
@@ -158,23 +152,24 @@ extension LoginView: LoginViewDelegate {
         completion(email, password)
     }
 
-    func showActivityIndicator() {
-        loginButton.configuration?.showsActivityIndicator = true
-        loginButton.setTitle("", for: .normal)
+    func setupActivityIndicator() {
+        guard let showsActivityIndicator = loginButton.configuration?.showsActivityIndicator else {return}
+        if showsActivityIndicator {
+            loginButton.setTitle("Entrar", for: .normal)
+            loginButton.configuration?.showsActivityIndicator = false
+        } else {
+            loginButton.setTitle("", for: .normal)
+            loginButton.configuration?.showsActivityIndicator = true
+        }
     }
 
-    func stopActivityIndicator() {
-        loginButton.configuration?.showsActivityIndicator = false
-        loginButton.setTitle("Entrar", for: .normal)
-    }
-
-    func showButton() {
-        passwordField.isSecureTextEntry = true
-        showHideButton.setImage(UIImage(named: "open-eye"), for: .normal)
-    }
-
-    func hideButton() {
-        passwordField.isSecureTextEntry = false
-        showHideButton.setImage(UIImage(named: "closed-eye"), for: .normal)
+    func setupShowHideButton() {
+        if passwordField.isSecureTextEntry {
+            showHideButton.setImage(UIImage(named: "closed-eye"), for: .normal)
+            passwordField.isSecureTextEntry = false
+        } else {
+            showHideButton.setImage(UIImage(named: "open-eye"), for: .normal)
+            passwordField.isSecureTextEntry = true
+        }
     }
 }
