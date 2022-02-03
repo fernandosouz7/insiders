@@ -28,10 +28,7 @@ final class LoginViewController: BaseViewController {
     }
 
     private func setupActions() {
-        customView?.configureActions(forgotPasswordSelector: #selector(didTapButton(sender:)),
-                                     loginSelector: #selector(didTapButton(sender:)),
-                                     signUpSelector: #selector(didTapButton(sender:)),
-                                     showHideSelector: #selector(didTapShowHideButton(sender:)),
+        customView?.configureActions(buttonSelector: #selector(didTapButton(sender:)),
                                      viewController: self)
     }
 
@@ -39,19 +36,20 @@ final class LoginViewController: BaseViewController {
         guard let loginViewModel = viewModel,
               let view = customView else {return}
         view.getEmailAndPassword {email, password in
-            view.setupActivityIndicator()
+            view.showActivityIndicator()
             loginViewModel.makeLogin(with: email, and: password) {[weak self] _ in
-                self?.customView?.setupActivityIndicator()
+                self?.customView?.showActivityIndicator()
             }
         }
     }
 
     @objc private func didTapButton(sender: UIButton) {
-        guard let placeholder = sender.titleLabel?.text else {return}
-        switch placeholder {
-        case "Esqueceu a senha?": viewModel?.showRecoverPasswordViewController()
-        case "Entrar": self.setupLogin()
-        case "Inscrever-se": viewModel?.showSignUpViewController()
+        let index = sender.tag
+        switch index {
+        case 0: customView?.setupPasswordVisibility()
+        case 1: viewModel?.showRecoverPasswordViewController()
+        case 2: self.setupLogin()
+        case 3: viewModel?.showSignUpViewController()
         default:
             break
         }
@@ -59,9 +57,5 @@ final class LoginViewController: BaseViewController {
 
     @objc private func didTapBackButton() {
         viewModel?.didFinish()
-    }
-
-    @objc private func didTapShowHideButton(sender: UIButton) {
-        customView?.setupShowHideButton()
     }
 }

@@ -2,14 +2,11 @@ import UIKit
 import Cartography
 
 protocol LoginViewDelegate: AnyObject {
-    func configureActions(forgotPasswordSelector: Selector,
-                          loginSelector: Selector,
-                          signUpSelector: Selector,
-                          showHideSelector: Selector,
+    func configureActions(buttonSelector: Selector,
                           viewController: UIViewController)
     func getEmailAndPassword(completion: @escaping (String, String) -> Void)
-    func setupActivityIndicator()
-    func setupShowHideButton()
+    func setupPasswordVisibility()
+    func showActivityIndicator()
 }
 
 final class LoginView: UIView {
@@ -97,11 +94,13 @@ final class LoginView: UIView {
         passwordField.borderStyle = .roundedRect
 
         showHideButton.setImage(UIImage(named: "open-eye"), for: .normal)
+        showHideButton.tag = 0
 
         forgotPasswordButton.setTitle("Esqueceu a senha?", for: .normal)
         forgotPasswordButton.contentHorizontalAlignment = .trailing
         forgotPasswordButton.titleLabel?.font = .systemFont(ofSize: 12)
         forgotPasswordButton.setTitleColor(UIColor(named: "Shamrock"), for: .normal)
+        forgotPasswordButton.tag = 1
 
         loginButton.setTitle("Entrar", for: .normal)
         loginButton.setTitleColor(.black, for: .normal)
@@ -109,6 +108,7 @@ final class LoginView: UIView {
         loginButton.configuration?.cornerStyle = .capsule
         loginButton.configuration?.buttonSize = .large
         loginButton.configuration?.baseBackgroundColor = .init(named: "Shamrock")
+        loginButton.tag = 2
 
         signUpStack.axis = .horizontal
         signUpStack.alignment = .fill
@@ -123,6 +123,7 @@ final class LoginView: UIView {
         signUpButton.contentHorizontalAlignment = .leading
         signUpButton.setTitle("Inscrever-se", for: .normal)
         signUpButton.setTitleColor(UIColor(named: "Shamrock"), for: .normal)
+        signUpButton.tag = 3
 
         backgroundColor = .systemBackground
     }
@@ -135,15 +136,12 @@ final class LoginView: UIView {
 }
 
 extension LoginView: LoginViewDelegate {
-    func configureActions(forgotPasswordSelector: Selector,
-                          loginSelector: Selector,
-                          signUpSelector: Selector,
-                          showHideSelector: Selector,
+    func configureActions(buttonSelector: Selector,
                           viewController: UIViewController) {
-        forgotPasswordButton.addTarget(viewController, action: forgotPasswordSelector, for: .touchUpInside)
-        loginButton.addTarget(viewController, action: loginSelector, for: .touchUpInside)
-        signUpButton.addTarget(viewController, action: signUpSelector, for: .touchUpInside)
-        showHideButton.addTarget(viewController, action: showHideSelector, for: .touchUpInside)
+        forgotPasswordButton.addTarget(viewController, action: buttonSelector, for: .touchUpInside)
+        loginButton.addTarget(viewController, action: buttonSelector, for: .touchUpInside)
+        signUpButton.addTarget(viewController, action: buttonSelector, for: .touchUpInside)
+        showHideButton.addTarget(viewController, action: buttonSelector, for: .touchUpInside)
     }
 
     func getEmailAndPassword(completion: @escaping (String, String) -> Void) {
