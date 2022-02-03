@@ -152,7 +152,7 @@ extension LoginView: LoginViewDelegate {
         completion(email, password)
     }
 
-    func setupActivityIndicator() {
+    func showActivityIndicator() {
         guard let showsActivityIndicator = loginButton.configuration?.showsActivityIndicator else {return}
         if showsActivityIndicator {
             loginButton.setTitle("Entrar", for: .normal)
