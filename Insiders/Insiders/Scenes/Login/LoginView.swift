@@ -163,7 +163,7 @@ extension LoginView: LoginViewDelegate {
         }
     }
 
-    func setupShowHideButton() {
+    func setupPasswordVisibility() {
         if passwordField.isSecureTextEntry {
             showHideButton.setImage(UIImage(named: "closed-eye"), for: .normal)
             passwordField.isSecureTextEntry = false
