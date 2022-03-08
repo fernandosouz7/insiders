@@ -3,6 +3,9 @@ import UIKit
 final class LoginViewController: BaseViewController {
 
     private var viewModel: LoginViewModel?
+    private var customView: LoginViewDelegate? {
+        return (view as? LoginViewDelegate)
+    }
 
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -21,38 +24,38 @@ final class LoginViewController: BaseViewController {
         super.viewDidLoad()
         super.setupLeftBarButton(selector: #selector(didTapBackButton))
         setupNavigation(isHidden: false)
+        setupActions()
     }
 
-    // MARK: - IBActions
-//    @IBAction private func didTapLoginButton(_ sender: Any) {
-//        guard let email = emailField.text,
-//              let password = passwordField.text,
-//              let loginViewModel = viewModel else { return }
-//        activityIndicator.startAnimating()
-//        loginViewModel.makeLogin(with: email, and: password)
-//    }
-//
-//    @IBAction func didTapForgotPasswordButton(_ sender: Any) {
-//        viewModel?.showRecoverPasswordViewController()
-//    }
-//
-//    @IBAction func didTapSignUpButton(_ sender: Any) {
-//        viewModel?.showSignUpViewController()
-//    }
+    private func setupActions() {
+        customView?.configureActions(buttonSelector: #selector(didTapButton(sender:)),
+                                     viewController: self)
+    }
+
+    private func setupLogin() {
+        guard let loginViewModel = viewModel,
+              let view = customView else {return}
+        view.getEmailAndPassword {email, password in
+            view.showActivityIndicator()
+            loginViewModel.makeLogin(with: email, and: password) {[weak self] _ in
+                self?.customView?.showActivityIndicator()
+            }
+        }
+    }
+
+    @objc private func didTapButton(sender: UIButton) {
+        let index = sender.tag
+        switch index {
+        case 0: customView?.setupPasswordVisibility()
+        case 1: viewModel?.showRecoverPasswordViewController()
+        case 2: self.setupLogin()
+        case 3: viewModel?.showSignUpViewController()
+        default:
+            break
+        }
+    }
 
     @objc private func didTapBackButton() {
         viewModel?.didFinish()
     }
 }
-
-//extension LoginViewController: LoginViewModelDelegate {
-//
-//    func showErrorMessage(with message: String) {
-//        activityIndicator.stopAnimating()
-//        presentAlert(with: message)
-//    }
-//
-//    func didFinishLoginWithSuccess() {
-//        activityIndicator.stopAnimating()
-//    }
-//}

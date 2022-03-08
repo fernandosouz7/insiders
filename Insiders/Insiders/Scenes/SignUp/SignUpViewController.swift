@@ -3,7 +3,7 @@ import UIKit
 final class SignUpViewController: BaseViewController {
 
     private var viewModel: SignUpViewModel?
-    
+
     init(viewModel: SignUpViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
